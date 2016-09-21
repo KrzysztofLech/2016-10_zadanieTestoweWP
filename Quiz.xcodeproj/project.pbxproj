@@ -14,6 +14,12 @@
 		CF11B55C1D91845000BC817D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B55B1D91845000BC817D /* SwiftyJSON.swift */; };
 		CF11B5601D9187D400BC817D /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B55F1D9187D400BC817D /* TableVC.swift */; };
 		CF11B5621D918ACF00BC817D /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B5611D918ACF00BC817D /* Quiz.swift */; };
+		CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5791D92504F007E5515 /* FirstVC.swift */; };
+		CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */; };
+		CFCFB5801D925CDB007E5515 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */; };
+		CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5811D92D582007E5515 /* TaskVC.swift */; };
+		CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5881D92DB6B007E5515 /* Button1.swift */; };
+		CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		CF11B55B1D91845000BC817D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		CF11B55F1D9187D400BC817D /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		CF11B5611D918ACF00BC817D /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		CFCFB5791D92504F007E5515 /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserContentVC.swift; sourceTree = "<group>"; };
+		CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
+		CFCFB5811D92D582007E5515 /* TaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
+		CFCFB5881D92DB6B007E5515 /* Button1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button1.swift; sourceTree = "<group>"; };
+		CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +72,9 @@
 			children = (
 				CF11B54C1D917ECF00BC817D /* Main.storyboard */,
 				CF11B5481D917ECF00BC817D /* AppDelegate.swift */,
-				CF11B55F1D9187D400BC817D /* TableVC.swift */,
-				CF11B5611D918ACF00BC817D /* Quiz.swift */,
+				CFCFB5841D92D5BE007E5515 /* Models */,
+				CFCFB5831D92D5AB007E5515 /* Controllers */,
+				CFCFB5871D92D9DE007E5515 /* Layers */,
 				CF11B55A1D9180E000BC817D /* Resources */,
 			);
 			path = Quiz;
@@ -76,6 +89,35 @@
 				CF11B5541D917ECF00BC817D /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		CFCFB5831D92D5AB007E5515 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFCFB5791D92504F007E5515 /* FirstVC.swift */,
+				CF11B55F1D9187D400BC817D /* TableVC.swift */,
+				CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */,
+				CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */,
+				CFCFB5811D92D582007E5515 /* TaskVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CFCFB5841D92D5BE007E5515 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF11B5611D918ACF00BC817D /* Quiz.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CFCFB5871D92D9DE007E5515 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				CFCFB5881D92DB6B007E5515 /* Button1.swift */,
+				CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */,
+			);
+			name = Layers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,7 +196,13 @@
 				CF11B55C1D91845000BC817D /* SwiftyJSON.swift in Sources */,
 				CF11B5601D9187D400BC817D /* TableVC.swift in Sources */,
 				CF11B5621D918ACF00BC817D /* Quiz.swift in Sources */,
+				CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */,
+				CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */,
+				CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */,
+				CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */,
+				CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */,
 				CF11B5491D917ECF00BC817D /* AppDelegate.swift in Sources */,
+				CFCFB5801D925CDB007E5515 /* BrowserVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2UGBQYC9Y9;
 				INFOPLIST_FILE = Quiz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.czanygrom.Quiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +341,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2UGBQYC9Y9;
 				INFOPLIST_FILE = Quiz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.czanygrom.Quiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -318,6 +368,7 @@
 				CF11B5591D917ECF00BC817D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -22,7 +22,8 @@ class TableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        readData()
+        loadAllImages()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,31 +39,42 @@ class TableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return (quizzes?.count)! }
     
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 250 }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let labelText = String(indexPath.row + 1) + " " + (quizzes?.items?[indexPath.row].title)!
-        cell.textLabel?.text = labelText
         
+        let imageView = cell.viewWithTag(1000) as! UIImageView
+        let image = quizzes?.items?[indexPath.row].mainPhoto?.smallImage
+        imageView.image = image
+        
+        let label = cell.viewWithTag(1001) as! UILabel
+        let labelText = String(indexPath.row + 1) + " " + (quizzes?.items?[indexPath.row].title)!
+        label.text = labelText
+
         return cell
     }
-
-    
     
     
     // MARK: - Other methods
     
-    func readData() {
-        let url = URL(string: "http://quiz.o2.pl/api/v1/quizzes/0/100")
-        let jsonString = try! String(contentsOf: url!)
+    func loadAllImages() {
         
-        let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
-        let json = JSON(data: jsonData)
-        
-        quizzes = Quiz(json: json)
+        let itemsNumber = quizzes?.count
+        let size = view.frame.size
+        for index in 3..<itemsNumber! {
+            
+            let queue = DispatchQueue(label: "image", qos: .background, target: nil)
+            queue.async {
+                self.quizzes?.items?[index].loadImages(size: size)
+
+                print(index)
+            }
+        }
     }
 
-    
+
+
     /*
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
