@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Quiz {
+class Quizzes {
 
     var count: Int?
     var items: [Item]?
@@ -33,28 +33,28 @@ class Item {
     var title:          String?
     
     var id:             Double?
-    var sponsored:      Bool?
-    var type:           String?
-    var shareTitle:     String?
-    var buttonStart:    String?
-    var questions:      Int?
-    var createdAt:      String?
-    var content:        String?
+    //var sponsored:      Bool?
+    var type:           String?         // Knowledge, Psyhotest
+    //var shareTitle:     String?
+    //var buttonStart:    String?
+    var questions:      Int?            // liczba pytań
+    //var createdAt:      String?
+    var content:        String?         // Zachęta
     
-    var categories:     [Categories]?
-    var category:       Category?
-    var mainPhoto:      MainPhoto?
+    var categories:     [Categories]?   // kategoria
+    var category:       Category?       // kategoria cd
+    var mainPhoto:      MainPhoto?      // zdjęcie
     
     
     init(json: JSON) {
         title = json["title"].string
         id = json["id"].double
-        sponsored = json["sponsored"].bool
+        //sponsored = json["sponsored"].bool
         type = json["type"].string
-        shareTitle = json["shareTitle"].string
-        buttonStart = json["buttonStart"].string
+        //shareTitle = json["shareTitle"].string
+        //buttonStart = json["buttonStart"].string
         questions = json["questions"].int
-        createdAt = json["createdAt"].string
+        //createdAt = json["createdAt"].string
         content = json["content"].string
 
         if let arrayCategories = json["categories"].array {
@@ -90,14 +90,14 @@ class Item {
 
 class Categories {
     
-    var uid: Double?
+    //var uid: Double?
     var name: String?
-    var type: String?
+    //var type: String?
     
     init(json: JSON) {
-        uid = json["uid"].double
+        //uid = json["uid"].double
         name = json["name"].string
-        type = json["type"].string
+        //type = json["type"].string
     }
 }
 
@@ -115,23 +115,24 @@ class Category {
 }
 
 class MainPhoto {
-    
-    var author: String?
-    var title: String?
-    var height: Int?
-    var source: String?
-    var width: Int?
+
     var url: String?
-    var smallImage: UIImage?
-    var mediumImage: UIImage?
+    var height: Int?
+    var width: Int?
+    var smallImage: UIImage?        // do tabeli
+    var mediumImage: UIImage?       // do Page VC
+    //var author: String?
+    //var title: String?
+    //var source: String?
+    
     
     init(json: JSON) {
         url = json["url"].string
         height = json["height"].int
         width = json["width"].int
-        title = json["title"].string
-        source = json["source"].string
-        author = json["author"].string
+        //title = json["title"].string
+        //source = json["source"].string
+        //author = json["author"].string
 /*
         // pobieranie grafik i ich skalowanie w tle
         let queue = DispatchQueue(label: "image", qos: .background, target: nil)

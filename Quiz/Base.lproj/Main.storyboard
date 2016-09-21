@@ -138,6 +138,14 @@
                                 <color key="textColor" red="1" green="0.75922818790000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhi-Nl-dGP">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mp5-ea-A3c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -146,10 +154,14 @@
                             <constraint firstItem="Jgh-5z-d8I" firstAttribute="leading" secondItem="pMX-Vc-mYF" secondAttribute="leadingMargin" constant="10" id="LND-8s-EnZ"/>
                             <constraint firstItem="WUR-1n-3mk" firstAttribute="top" secondItem="Jgh-5z-d8I" secondAttribute="bottom" constant="10" id="Otr-I8-8bc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jgh-5z-d8I" secondAttribute="trailing" constant="10" id="QmQ-oA-xOx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dhi-Nl-dGP" secondAttribute="trailing" constant="10" id="Rcc-Db-EMy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WUR-1n-3mk" secondAttribute="trailing" constant="10" id="gAT-FX-zxW"/>
+                            <constraint firstItem="dhi-Nl-dGP" firstAttribute="top" secondItem="WUR-1n-3mk" secondAttribute="bottom" constant="5" id="mlz-sV-qe7"/>
+                            <constraint firstItem="dhi-Nl-dGP" firstAttribute="leading" secondItem="pMX-Vc-mYF" secondAttribute="leadingMargin" constant="10" id="oRS-nb-BpP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentLabel" destination="dhi-Nl-dGP" id="Wwc-zY-rrE"/>
                         <outlet property="imageView" destination="Jgh-5z-d8I" id="Asm-z0-ycE"/>
                         <outlet property="titleLabel" destination="WUR-1n-3mk" id="atM-de-8gt"/>
                     </connections>
@@ -158,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="1357.5999999999999" y="778.56071964017997"/>
         </scene>
-        <!--View Controller-->
+        <!--TaskVC-->
         <scene sceneID="eOH-vC-jzf">
             <objects>
-                <viewController id="ANd-g3-04p" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskVC" id="ANd-g3-04p" customClass="TaskVC" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5yt-C0-6M5"/>
                         <viewControllerLayoutGuide type="bottom" id="sap-7B-fn5"/>
@@ -169,12 +181,12 @@
                     <view key="view" contentMode="scaleToFill" id="yox-yG-6Wq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.75922818790000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zou-4s-Aqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="779"/>
+            <point key="canvasLocation" x="865" y="117"/>
         </scene>
         <!--TableVC-->
         <scene sceneID="P8U-Oy-exA">
@@ -213,6 +225,10 @@
                                         <constraint firstAttribute="trailing" secondItem="YLE-r6-B11" secondAttribute="trailing" constant="5" id="lpt-NG-JhK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <segue destination="ANd-g3-04p" kind="show" identifier="TaskVC" id="fY9-mg-UfH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

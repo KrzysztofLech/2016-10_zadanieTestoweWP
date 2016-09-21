@@ -10,13 +10,15 @@ import UIKit
 
 class TaskVC: UIViewController {
 
-    
+    var quizID: Double?
+    var quizTitle: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        print("Wybrano quiz z ID: \(quizID!)")
+        print("Title: \(quizTitle!)")
     }
 
 

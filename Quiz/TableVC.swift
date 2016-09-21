@@ -13,7 +13,7 @@ class TableVC: UITableViewController {
     
     //MARK: - Properties
     
-    var quizzes: Quiz?
+    var quizzes: Quizzes?
     
     
     
@@ -59,11 +59,9 @@ class TableVC: UITableViewController {
     // MARK: - Other methods
     
     func loadAllImages() {
-        
         let itemsNumber = quizzes?.count
         let size = view.frame.size
         for index in 3..<itemsNumber! {
-            
             let queue = DispatchQueue(label: "image", qos: .background, target: nil)
             queue.async {
                 self.quizzes?.items?[index].loadImages(size: size)
@@ -74,13 +72,11 @@ class TableVC: UITableViewController {
     }
 
 
-
-    /*
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let index = tableView.indexPathForSelectedRow?.row
+        let taskVC = segue.destination as! TaskVC
+        taskVC.quizID = quizzes?.items?[index!].id
+        taskVC.quizTitle = quizzes?.items?[index!].title
+    }
 
 }

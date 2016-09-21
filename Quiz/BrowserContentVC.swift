@@ -12,17 +12,22 @@ class BrowserContentVC: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     var quizTitle: String!
     var quizImage: UIImage!
+    var quizContent: String!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = quizTitle
         imageView.image = quizImage
+        titleLabel.text = quizTitle
+        
+        contentLabel.textColor = UIColor.white
+        contentLabel.text = quizContent
     }
     
     override func viewWillAppear(_ animated: Bool) {

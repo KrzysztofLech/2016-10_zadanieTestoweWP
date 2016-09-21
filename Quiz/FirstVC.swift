@@ -11,7 +11,7 @@ import UIKit
 class FirstVC: UIViewController {
 
     
-    var quizzes: Quiz?
+    var quizzes: Quizzes?
     var firstItem = 0
 
     
@@ -30,7 +30,7 @@ class FirstVC: UIViewController {
         let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
         let json = JSON(data: jsonData)
         
-        quizzes = Quiz(json: json)
+        quizzes = Quizzes(json: json)
         
         //print("Załadowano dane")
     }

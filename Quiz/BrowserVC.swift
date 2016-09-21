@@ -12,7 +12,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     //MARK: - Properties
     
-    var quizzes: Quiz?
+    var quizzes: Quizzes?
 
     var pageVC = UIPageViewController()
     var controllers = [UIViewController]()
@@ -77,6 +77,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         
         // przekaznie danych quizu do kontentu
         pageContentVC.quizTitle = quizzes?.items?[index].title
+        pageContentVC.quizContent = quizzes?.items?[index].content
         
         // sprawdzenie czy zdjęcie jest już załadowane
         // jeśli nie, to ładujemy je
@@ -160,7 +161,10 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     }
     
     @IBAction func buttonSelected(_ sender: UIButton) {
-        
+        let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC
+        taskVC.quizID = quizzes?.items?[currentPageIndex].id
+        taskVC.quizTitle = quizzes?.items?[currentPageIndex].title
+        present(taskVC, animated: true, completion: nil)
     }
     
     
