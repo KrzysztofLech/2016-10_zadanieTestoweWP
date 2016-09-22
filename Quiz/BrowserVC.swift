@@ -28,16 +28,29 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     //MARK: - System methods
     
+    // ukrycie Status Bara
+    override var prefersStatusBarHidden: Bool {
+        get { return true }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         pagesNumber = quizzes?.items?.count
-        
+
+/*
         // tworzymy pierwszą stronę
         let vc = viewControllerAtIndex(0)
         controllers.append(vc!)
+*/
         
-
+        // tworzymy pierwsze 3 strony
+        for index in 0...2 {
+            let vc = viewControllerAtIndex(index)
+            controllers.append(vc!)
+        }
+        
         // określamy wielkość ładowanych zdjęć
         imageSize = view.frame.size
         
@@ -76,16 +89,30 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         let pageContentVC = storyboard?.instantiateViewController(withIdentifier: "BrowserContentVC") as! BrowserContentVC
         
         // przekaznie danych quizu do kontentu
-        pageContentVC.quizTitle = quizzes?.items?[index].title
-        pageContentVC.quizContent = quizzes?.items?[index].content
         
-        // sprawdzenie czy zdjęcie jest już załadowane
-        // jeśli nie, to ładujemy je
+        let quizTitle = quizzes?.items?[index].title
+        
+        let quizImage: UIImage
         let image = quizzes?.items?[index].mainPhoto?.mediumImage
+        // sprawdzenie czy zdjęcie jest już załadowane, jeśli nie, to ładujemy je
         if image == nil {
             quizzes?.items?[index].loadImages(size: imageSize)
         }
-        pageContentVC.quizImage = quizzes?.items?[index].mainPhoto?.mediumImage
+        quizImage = (quizzes?.items?[index].mainPhoto?.mediumImage)!
+        
+        let quizCategory: String
+        let category1 = (quizzes?.items?[index].categories?[0].name)!
+        let category2 = (quizzes?.items?[index].category?.name)!
+        quizCategory = category1 + " / " + category2
+        
+        let quizContent = quizzes?.items?[index].content
+        let quizQuestionAmount = quizzes?.items?[index].questions
+        
+        pageContentVC.quizTitle = quizTitle
+        pageContentVC.quizImage = quizImage
+        pageContentVC.quizCategory = quizCategory
+        pageContentVC.quizContent = quizContent
+        pageContentVC.quizQuestionAmount = quizQuestionAmount
         
         return pageContentVC
     }
@@ -106,9 +133,6 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let index = controllers.index(of: viewController) {
-            
-            let vc = viewControllerAtIndex(index + 1)
-            controllers.append(vc!)
 
             if index < controllers.count - 1 {
                 return controllers[index + 1]
@@ -135,18 +159,22 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
             if nextPageIndex > currentPageIndex {
                 currentPageIndex += 1
                 
-                let imageToLoad = currentPageIndex + 2
-                let nextImage = quizzes?.items?[imageToLoad].mainPhoto?.mediumImage
+                // ładujemy kolejne zdjęcie do kontrolera 2 pozycje dalej
+                let newPageIndex = currentPageIndex + 2
+                let nextImage = quizzes?.items?[newPageIndex].mainPhoto?.mediumImage
                 if nextImage == nil {
-
                     // pobieranie kolejnego zdjęcia w tle
-                    loadImage(index: imageToLoad)
+                    loadImage(index: newPageIndex)
                 }
+                
+                // tworzymy kontroler dla strony 2 pozycje dalej
+                let vc = viewControllerAtIndex(newPageIndex)
+                controllers.append(vc!)
+                print("Utworzono VC nr \(newPageIndex)")
             }
             else if nextPageIndex < currentPageIndex {
                 currentPageIndex -= 1
             }
-            
             //print("Wyświetlono stronę nr: \(currentPageIndex)")
         }
     }
@@ -162,8 +190,10 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     @IBAction func buttonSelected(_ sender: UIButton) {
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC
+        
         taskVC.quizID = quizzes?.items?[currentPageIndex].id
-        taskVC.quizTitle = quizzes?.items?[currentPageIndex].title
+        taskVC.quizImage = quizzes?.items?[currentPageIndex].mainPhoto?.mediumImage
+        
         present(taskVC, animated: true, completion: nil)
     }
     

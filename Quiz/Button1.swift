@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Button1: UIButton {
+@IBDesignable class Button1: UIButton {
 
     override func draw(_ rect: CGRect) {
         

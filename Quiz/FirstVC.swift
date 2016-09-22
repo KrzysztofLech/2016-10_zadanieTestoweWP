@@ -57,10 +57,12 @@ class FirstVC: UIViewController {
             let controler = segue.destination as! TableVC
             controler.quizzes = quizzes
         }
+
         else if segue.identifier == "browserSegue" {
             let controler = segue.destination as! BrowserVC
             controler.quizzes = quizzes
         }
+
     }
     
     

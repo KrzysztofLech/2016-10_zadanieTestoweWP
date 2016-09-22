@@ -32,7 +32,7 @@ class Item {
     
     var title:          String?
     
-    var id:             Double?
+    var id:             Int?
     //var sponsored:      Bool?
     var type:           String?         // Knowledge, Psyhotest
     //var shareTitle:     String?
@@ -48,7 +48,7 @@ class Item {
     
     init(json: JSON) {
         title = json["title"].string
-        id = json["id"].double
+        id = json["id"].int
         //sponsored = json["sponsored"].bool
         type = json["type"].string
         //shareTitle = json["shareTitle"].string

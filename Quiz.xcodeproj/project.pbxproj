@@ -20,6 +20,8 @@
 		CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5811D92D582007E5515 /* TaskVC.swift */; };
 		CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5881D92DB6B007E5515 /* Button1.swift */; };
 		CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */; };
+		CFCFB58F1D9300C1007E5515 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB58E1D9300C1007E5515 /* Quiz.swift */; };
+		CFCFB5911D93E47B007E5515 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5901D93E47B007E5515 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		CFCFB5811D92D582007E5515 /* TaskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 		CFCFB5881D92DB6B007E5515 /* Button1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button1.swift; sourceTree = "<group>"; };
 		CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
+		CFCFB58E1D9300C1007E5515 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		CFCFB5901D93E47B007E5515 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				CF11B5611D918ACF00BC817D /* Quizzes.swift */,
+				CFCFB58E1D9300C1007E5515 /* Quiz.swift */,
+				CFCFB5901D93E47B007E5515 /* Player.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -197,9 +203,11 @@
 				CF11B5601D9187D400BC817D /* TableVC.swift in Sources */,
 				CF11B5621D918ACF00BC817D /* Quizzes.swift in Sources */,
 				CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */,
+				CFCFB5911D93E47B007E5515 /* Player.swift in Sources */,
 				CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */,
 				CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */,
 				CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */,
+				CFCFB58F1D9300C1007E5515 /* Quiz.swift in Sources */,
 				CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */,
 				CF11B5491D917ECF00BC817D /* AppDelegate.swift in Sources */,
 				CFCFB5801D925CDB007E5515 /* BrowserVC.swift in Sources */,
@@ -327,7 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2UGBQYC9Y9;
 				INFOPLIST_FILE = Quiz/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.czanygrom.Quiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -341,7 +349,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2UGBQYC9Y9;
 				INFOPLIST_FILE = Quiz/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.czanygrom.Quiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";

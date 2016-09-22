@@ -55,6 +55,17 @@ class TableVC: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC
+        
+        taskVC.quizID = quizzes?.items?[indexPath.row].id
+        taskVC.quizImage = quizzes?.items?[indexPath.row].mainPhoto?.mediumImage
+        
+        present(taskVC, animated: true, completion: nil)
+    }
+    
+    
     
     // MARK: - Other methods
     
@@ -71,12 +82,12 @@ class TableVC: UITableViewController {
         }
     }
 
-
+/*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let index = tableView.indexPathForSelectedRow?.row
         let taskVC = segue.destination as! TaskVC
         taskVC.quizID = quizzes?.items?[index!].id
-        taskVC.quizTitle = quizzes?.items?[index!].title
+        taskVC.quizImage = quizzes?.items?[index!].mainPhoto?.mediumImage
     }
-
+*/
 }
