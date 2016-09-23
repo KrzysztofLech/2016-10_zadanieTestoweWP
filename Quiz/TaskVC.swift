@@ -60,10 +60,12 @@ class TaskVC: UIViewController {
         get { return true }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         viewWidth = view.frame.width        // ustalamy szerokość ekranu
+        quizImageView.image = quizImage     // wyświetlamy zdjęcie przekazne z poprzedniego widoku
         
         // pokaż przyciski
         for index in 1...4 {
@@ -75,6 +77,7 @@ class TaskVC: UIViewController {
                 button.center.x -= viewWidth
             }
             showButton(button)
+            scaleImageAnimation()
         }
     }
     
@@ -82,13 +85,14 @@ class TaskVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-print("viewDidLoad")
+
         readJsonData()                          // odczyt danych quizu
         readPlayerData()                        // odczyt danych gracza
 
-        setUpQuiz()                             // konfiguracja widoku
         setUpQuestion(playerDoneQuestions)      // konfiguracja widoku dla danego pytania
     }
+
+    
 
     
     // MARK: - Other Methods
@@ -113,6 +117,18 @@ print("viewDidLoad")
                 }
             },
             completion: nil)
+    }
+    
+    
+    func scaleImageAnimation() {
+        let scale = CABasicAnimation(keyPath: "transform.scale")
+        scale.fromValue = 1.00
+        scale.toValue = 2.0
+        scale.duration = 20.0
+        scale.repeatCount = Float.infinity
+        scale.autoreverses = true
+        
+        quizImageView.layer.add(scale, forKey: nil)
     }
     
     
@@ -163,33 +179,27 @@ print("viewDidLoad")
         }
     }
     
-    
-    func setUpQuiz() {
-        quizImageView.image = quizImage                     // wyświetlamy zdjęcie przekazne z poprzedniego widoku
-        allQuestionAmount = (quiz?.questions?.count)!
-        
-        // ustawiamy początkowe wartości progress bara
-        quizProgressBar.progress = questionsCompletedPercent / 100
-        
-        progresBarDoneLabel.text = String(playerDoneQuestions)
-        progresBarAllLabel.text = String(allQuestionAmount)
-        progresBarPercentLabel.text = String(format: "%0.2f %@", questionsCompletedPercent, "%")
 
-    }
     
     func setUpQuestion(_ questionNumber: Int) {
+        allQuestionAmount = (quiz?.questions?.count)!
         
-        // sprawdzamy, czy pytanie ma własne zdjęcie
-        if let questionImageURL = quiz?.questions?[questionNumber].image?.url {
-            quizImageView.image = loadImage(fromURL: questionImageURL)
+        // uaktualniamy progress bar
+        progresBarDoneLabel.text = String(playerDoneQuestions)
+        progresBarAllLabel.text = String(allQuestionAmount)
+        quizProgressBar.progress = questionsCompletedPercent / 100
+        progresBarPercentLabel.text = String(format: "%0.2f %@", questionsCompletedPercent, "%")
+        
+        // sprawdzamy, czy pytanie ma własne zdjęcie, jeśli tak to ładujemy je
+        let questionImageURL = quiz?.questions?[questionNumber].image?.url
+        if questionImageURL != nil && questionImageURL != ""  {
+            quizImageView.image = readImage(fromURL: questionImageURL!)
+            scaleImageAnimation()
         }
         
         quizQuestionNumber.text = String(format: "Pytanie %i", playerDoneQuestions + 1)
         quizQuestionLabel.text = quiz?.questions?[questionNumber].text
         
-        /// Sprawdzić czy pytanie ma własne zdjęcie, jeśli tak to pobrać je
-        
-
         // ustawiamy napisy na przyciskach i wyłączamy zbędne
         let numberOfAnswers = quiz?.questions?[questionNumber].answers?.count
         for index in 1...4 {
@@ -202,13 +212,7 @@ print("viewDidLoad")
                 button.alpha = 0.0
             }
         }
-
         // TODO: ustawić dla napisów przycisków setAttributtedTitle
-        
-        // uaktualniamy progress bar
-        progresBarDoneLabel.text = String(playerDoneQuestions)
-        quizProgressBar.progress = questionsCompletedPercent / 100
-        progresBarPercentLabel.text = String(format: "%0.2f %@", questionsCompletedPercent, "%")
     }
     
     
@@ -296,87 +300,8 @@ print("viewDidLoad")
         let finishVC = storyboard?.instantiateViewController(withIdentifier: "FinishVC") as! FinishVC
         finishVC.quiz = quiz
         finishVC.playerQuiz = playerQuiz
+        finishVC.quizImage = quizImage
         present(finishVC, animated: true, completion: nil)
     }
-    
-    
-    
 
-    
-    
-    
 }
-
-
-    /*
-     UIView.animate(withDuration: 0.5, animations: {
-     self.quizQuestionLabel.center.x += self.viewWidth
-     self.button1.center.x -= self.viewWidth
-     self.button2.center.x -= self.viewWidth
-     self.button3.center.x -= self.viewWidth
-     self.button4.center.x -= self.viewWidth
-     }, completion: { _ in
-     self.quizQuestionLabel.center.x += self.viewWidth
-     self.button1.center.x = -self.viewWidth
-     self.button2.center.x = -self.viewWidth
-     self.button3.center.x = -self.viewWidth
-     self.button4.center.x = -self.viewWidth
-     
-     self.setUpQuestion(self.playerDoneQuestions)      // ustawiamy kolejne pytanie i odpowiedzi
-     })
-     */
-    //button1.layer.position.x = -viewWidth
-    //button2.layer.position.x = -viewWidth
-    //button3.layer.position.x = -viewWidth
-    //button4.layer.position.x = -viewWidth
-    /*
-     // chowamy przyciski
-     let flyRight = CABasicAnimation(keyPath: "position.x")
-     flyRight.fromValue = view.center.x
-     flyRight.toValue = view.center.x - viewWidth
-     flyRight.duration = 0.5
-     //flyRight.fillMode = kCAFillModeBoth
-     flyRight.autoreverses = true
-     
-     button1.layer.add(flyRight, forKey: "flyRight")
-     //button1.layer.position.x = -viewWidth
-     
-     button2.layer.add(flyRight, forKey: nil)
-     //button2.center.x -= viewWidth
-     
-     button3.layer.add(flyRight, forKey: nil)
-     //button3.center.x -= viewWidth
-     
-     button4.layer.add(flyRight, forKey: nil)
-     //button4.center.x -= viewWidth
-     
-     
-     //chowamy label z pytaniem
-     let flyLeft = CABasicAnimation(keyPath: "position.x")
-     flyLeft.fromValue = view.center.x
-     flyLeft.toValue = view.center.x + viewWidth
-     flyLeft.duration = 0.5
-     flyLeft.autoreverses = true
-     flyLeft.delegate = self
-     flyLeft.setValue("animacjaFlyLeft", forKey: "name")
-     
-     quizQuestionLabel.layer.add(flyLeft, forKey: nil)
-     //quizQuestionLabel.center.x += viewWidth
-     */
-
-
-/*
- func animationDidStart(_ anim: CAAnimation) {
- }
- 
- func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
- 
- if let name = anim.value(forKey: "name") as? String {
- if name == "animacjaFlyLeft" {
- setUpQuestion(self.playerDoneQuestions)      // ustawiamy kolejne pytanie i odpowiedzi
- }
- }
- }
- */
-
-

@@ -21,7 +21,7 @@ func writePlayerData() {
 
 // funkcja odczytuje obraz z podanego adresu URL
 
-func loadImage(fromURL stringURL: String) -> UIImage {
+func readImage(fromURL stringURL: String) -> UIImage {
     let imageURL = URL(string: stringURL)
     let data = try! Data(contentsOf: imageURL!)
     let img = UIImage(data: data)!

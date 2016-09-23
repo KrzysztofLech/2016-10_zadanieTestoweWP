@@ -209,6 +209,9 @@
                                     <constraint firstAttribute="height" constant="230" id="brL-iH-MGc"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8T5-Qi-kEf" userLabel="tło">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2p8-td-UZ3" customClass="Button1" customModule="Quiz" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xD9-4X-xmy"/>
@@ -299,6 +302,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="S40-bD-kmg" secondAttribute="trailing" constant="50" id="GYl-2E-QwW"/>
                             <constraint firstAttribute="trailing" secondItem="O8w-ii-TTD" secondAttribute="trailing" id="HK5-p4-RMU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ywu-HN-UwQ" secondAttribute="trailing" constant="50" id="HUM-oq-A9P"/>
+                            <constraint firstAttribute="trailing" secondItem="8T5-Qi-kEf" secondAttribute="trailing" id="HhU-uH-7lD"/>
                             <constraint firstItem="O8w-ii-TTD" firstAttribute="top" secondItem="yox-yG-6Wq" secondAttribute="top" id="Hz5-BC-gNz"/>
                             <constraint firstItem="xWs-UZ-1O9" firstAttribute="centerX" secondItem="yox-yG-6Wq" secondAttribute="centerX" id="IJT-aZ-jur"/>
                             <constraint firstItem="O8w-ii-TTD" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leading" id="JhE-X3-ZO4"/>
@@ -311,10 +315,13 @@
                             <constraint firstItem="YAZ-Gl-mue" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="RRD-Rc-a3e"/>
                             <constraint firstItem="YAZ-Gl-mue" firstAttribute="height" secondItem="2p8-td-UZ3" secondAttribute="height" id="RdE-8x-Guo"/>
                             <constraint firstItem="IxJ-30-YCq" firstAttribute="centerX" secondItem="yox-yG-6Wq" secondAttribute="centerX" id="Rg7-dw-HbJ"/>
+                            <constraint firstItem="8T5-Qi-kEf" firstAttribute="top" secondItem="O8w-ii-TTD" secondAttribute="bottom" id="SgH-bw-4UI"/>
                             <constraint firstItem="S40-bD-kmg" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="T67-M2-GGx"/>
                             <constraint firstItem="2p8-td-UZ3" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="Ugi-Zj-Y8Q"/>
+                            <constraint firstItem="sap-7B-fn5" firstAttribute="top" secondItem="8T5-Qi-kEf" secondAttribute="bottom" id="Vis-8k-j0q"/>
                             <constraint firstItem="AzV-NX-4R5" firstAttribute="centerX" secondItem="yox-yG-6Wq" secondAttribute="centerX" id="Xcn-jt-Dcw"/>
                             <constraint firstItem="Ywu-HN-UwQ" firstAttribute="top" secondItem="S40-bD-kmg" secondAttribute="bottom" constant="20" id="YUJ-nA-IYn"/>
+                            <constraint firstItem="8T5-Qi-kEf" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leading" id="cAR-IC-sJX"/>
                             <constraint firstItem="S40-bD-kmg" firstAttribute="height" secondItem="2p8-td-UZ3" secondAttribute="height" id="dry-DH-vSg"/>
                             <constraint firstItem="Ywu-HN-UwQ" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="fZU-Rl-KaF"/>
                             <constraint firstItem="Zug-x2-pmM" firstAttribute="leading" secondItem="IxJ-30-YCq" secondAttribute="trailing" constant="10" id="nyM-yg-Q7a"/>
