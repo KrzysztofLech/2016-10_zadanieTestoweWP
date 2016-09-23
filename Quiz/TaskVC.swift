@@ -12,6 +12,7 @@ class TaskVC: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var quizImageView: UIImageView!
+    @IBOutlet weak var quizQuestionNumber: UILabel!
     @IBOutlet weak var quizQuestionLabel: UILabel!
     
     @IBOutlet weak var button1: UIButton!
@@ -48,6 +49,7 @@ class TaskVC: UIViewController {
         }
     }
     var viewWidth: CGFloat!                 // szerokość ekranu
+
     
     
     // MARK: - System Methods
@@ -76,10 +78,11 @@ class TaskVC: UIViewController {
         }
     }
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+print("viewDidLoad")
         readJsonData()                          // odczyt danych quizu
         readPlayerData()                        // odczyt danych gracza
 
@@ -175,6 +178,13 @@ class TaskVC: UIViewController {
     }
     
     func setUpQuestion(_ questionNumber: Int) {
+        
+        // sprawdzamy, czy pytanie ma własne zdjęcie
+        if let questionImageURL = quiz?.questions?[questionNumber].image?.url {
+            quizImageView.image = loadImage(fromURL: questionImageURL)
+        }
+        
+        quizQuestionNumber.text = String(format: "Pytanie %i", playerDoneQuestions + 1)
         quizQuestionLabel.text = quiz?.questions?[questionNumber].text
         
         /// Sprawdzić czy pytanie ma własne zdjęcie, jeśli tak to pobrać je
@@ -220,29 +230,25 @@ class TaskVC: UIViewController {
                 }, completion: { _ in
                     UIView.animate(withDuration: 2.5, animations: {
                         self.iconImageView.alpha = 0.0
-                        }, completion: {_ in
-                            //self.iconImageView.alpha = 0.0
+                        }, completion: {_ in            // jeśli to było ostatnie pytanie, to kończymy i przechodzimy do planszy podsumowującej
+                            if self.playerDoneQuestions == self.allQuestionAmount {
+                                self.showFinish()
+                            }
                     })
             })
         }
         
-        if answer {
-            print("Dobrze")
+        if answer {     // jeśli odpowiedź była dobra
             iconImageView.image = #imageLiteral(resourceName: "icon_ok")
             questionsCompletedPercent += 100 / Float(allQuestionAmount)
-        } else {
-            print("Źle")
+        } else {        // jeśli odpowiedź była zła
             iconImageView.image = #imageLiteral(resourceName: "icon_wrong")
         }
         playerDoneQuestions += 1    // koleny pytanie quizu zrobione
         writePlayerData()           // zapisujemy osiągnięcia gracza
         showIcon()                  // pokazuje ikonę dobrej lub złej odpowiedzi
         
-        if playerDoneQuestions == allQuestionAmount {
-            quizFinished()
-        } else {
-            hideButtonsAndQuestion()       // chowamy przyciski i pytanie -> pokazujemy nowe
-        }
+        hideButtonsAndQuestion()    // chowamy przyciski i pytanie -> pokazujemy nowe lub kończymy quiz
     }
     
 
@@ -282,17 +288,20 @@ class TaskVC: UIViewController {
     }
  
     
-    func quizFinished() {
-        hideButtonsAndQuestion()
+    func showFinish() {
         
+        playerQuiz.completed = true     // zapisujemy informację o ukończeniu quizu
+        writePlayerData()
         
-        print("Koniec")
-        /// załaduj kontroler z podsumowaniem
+        let finishVC = storyboard?.instantiateViewController(withIdentifier: "FinishVC") as! FinishVC
+        finishVC.quiz = quiz
+        finishVC.playerQuiz = playerQuiz
+        present(finishVC, animated: true, completion: nil)
     }
     
-    func writePlayerData() {
-        /// zapis danych gracza
-    }
+    
+    
+
     
     
     

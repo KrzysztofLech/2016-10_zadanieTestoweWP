@@ -48,7 +48,7 @@ class Questions {
     //var order: Int?
     var answers: [Answers]?
     //var answer: String?
-    //var image: Image?
+    var image: Image?
     //var type: String?
     
     
@@ -61,11 +61,32 @@ class Questions {
                 answers?.append(Answers(json: subJSON))
             }
         }
+        image = Image(json: json["image"])
         //answer = json["answer"].string
         //image = json["image"].image
         //type = json["type"].string
     }
 }
+
+class Image {
+    
+    var url: String?
+    var height: Int?
+    var width: Int?
+    //var mediaId: Int?
+    //var author: String?
+    //var source: String?
+    
+    init(json: JSON) {
+        url = json["url"].string
+        height = json["height"].int
+        width = json["width"].int
+        //mediaId = json["mediaId"].int
+        //author = json["author"].string
+        //source = json["source"].string
+    }
+}
+
 
 
 class Answers {

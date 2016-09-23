@@ -14,6 +14,9 @@
 		CF11B55C1D91845000BC817D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B55B1D91845000BC817D /* SwiftyJSON.swift */; };
 		CF11B5601D9187D400BC817D /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B55F1D9187D400BC817D /* TableVC.swift */; };
 		CF11B5621D918ACF00BC817D /* Quizzes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B5611D918ACF00BC817D /* Quizzes.swift */; };
+		CF2816F21D95368200FDDAF8 /* FinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2816F11D95368200FDDAF8 /* FinishVC.swift */; };
+		CF2816F41D953FB200FDDAF8 /* Button2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2816F31D953FB200FDDAF8 /* Button2.swift */; };
+		CF2816F81D954BDD00FDDAF8 /* Label1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2816F71D954BDD00FDDAF8 /* Label1.swift */; };
 		CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A30FE1D951D1100480541 /* Extensions.swift */; };
 		CF2A31011D951D2800480541 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A31001D951D2800480541 /* Functions.swift */; };
 		CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5791D92504F007E5515 /* FirstVC.swift */; };
@@ -36,6 +39,9 @@
 		CF11B55B1D91845000BC817D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		CF11B55F1D9187D400BC817D /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		CF11B5611D918ACF00BC817D /* Quizzes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quizzes.swift; sourceTree = "<group>"; };
+		CF2816F11D95368200FDDAF8 /* FinishVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishVC.swift; sourceTree = "<group>"; };
+		CF2816F31D953FB200FDDAF8 /* Button2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button2.swift; sourceTree = "<group>"; };
+		CF2816F71D954BDD00FDDAF8 /* Label1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label1.swift; sourceTree = "<group>"; };
 		CF2A30FE1D951D1100480541 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CF2A31001D951D2800480541 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CFCFB5791D92504F007E5515 /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 				CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */,
 				CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */,
 				CFCFB5811D92D582007E5515 /* TaskVC.swift */,
+				CF2816F11D95368200FDDAF8 /* FinishVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				CFCFB5881D92DB6B007E5515 /* Button1.swift */,
+				CF2816F31D953FB200FDDAF8 /* Button2.swift */,
+				CF2816F71D954BDD00FDDAF8 /* Label1.swift */,
 				CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */,
 			);
 			name = Layers;
@@ -219,10 +228,13 @@
 				CF2A31011D951D2800480541 /* Functions.swift in Sources */,
 				CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */,
 				CFCFB5911D93E47B007E5515 /* Player.swift in Sources */,
+				CF2816F41D953FB200FDDAF8 /* Button2.swift in Sources */,
+				CF2816F21D95368200FDDAF8 /* FinishVC.swift in Sources */,
 				CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */,
 				CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */,
 				CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */,
 				CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */,
+				CF2816F81D954BDD00FDDAF8 /* Label1.swift in Sources */,
 				CFCFB58F1D9300C1007E5515 /* Quiz.swift in Sources */,
 				CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */,
 				CF11B5491D917ECF00BC817D /* AppDelegate.swift in Sources */,

@@ -167,7 +167,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
                 // tworzymy kontroler dla strony 2 pozycje dalej
                 let vc = viewControllerAtIndex(newPageIndex)
                 controllers.append(vc!)
-                print("Utworzono VC nr \(newPageIndex)")
+                //print("Utworzono VC nr \(newPageIndex)")
             }
             else if nextPageIndex < currentPageIndex {
                 currentPageIndex -= 1
