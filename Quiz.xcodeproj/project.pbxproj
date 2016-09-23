@@ -14,6 +14,8 @@
 		CF11B55C1D91845000BC817D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B55B1D91845000BC817D /* SwiftyJSON.swift */; };
 		CF11B5601D9187D400BC817D /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B55F1D9187D400BC817D /* TableVC.swift */; };
 		CF11B5621D918ACF00BC817D /* Quizzes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11B5611D918ACF00BC817D /* Quizzes.swift */; };
+		CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A30FE1D951D1100480541 /* Extensions.swift */; };
+		CF2A31011D951D2800480541 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A31001D951D2800480541 /* Functions.swift */; };
 		CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5791D92504F007E5515 /* FirstVC.swift */; };
 		CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */; };
 		CFCFB5801D925CDB007E5515 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */; };
@@ -34,6 +36,8 @@
 		CF11B55B1D91845000BC817D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		CF11B55F1D9187D400BC817D /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		CF11B5611D918ACF00BC817D /* Quizzes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quizzes.swift; sourceTree = "<group>"; };
+		CF2A30FE1D951D1100480541 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CF2A31001D951D2800480541 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CFCFB5791D92504F007E5515 /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserContentVC.swift; sourceTree = "<group>"; };
 		CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 				CFCFB5831D92D5AB007E5515 /* Controllers */,
 				CFCFB5871D92D9DE007E5515 /* Layers */,
 				CF11B55A1D9180E000BC817D /* Resources */,
+				CF2A30FD1D951CD000480541 /* Other */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -87,12 +92,21 @@
 		CF11B55A1D9180E000BC817D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CF11B55B1D91845000BC817D /* SwiftyJSON.swift */,
+				CF2A30FE1D951D1100480541 /* Extensions.swift */,
+				CF2A31001D951D2800480541 /* Functions.swift */,
 				CF11B54F1D917ECF00BC817D /* Assets.xcassets */,
+				CF11B55B1D91845000BC817D /* SwiftyJSON.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CF2A30FD1D951CD000480541 /* Other */ = {
+			isa = PBXGroup;
+			children = (
 				CF11B5511D917ECF00BC817D /* LaunchScreen.storyboard */,
 				CF11B5541D917ECF00BC817D /* Info.plist */,
 			);
-			name = Resources;
+			name = Other;
 			sourceTree = "<group>";
 		};
 		CFCFB5831D92D5AB007E5515 /* Controllers */ = {
@@ -202,11 +216,13 @@
 				CF11B55C1D91845000BC817D /* SwiftyJSON.swift in Sources */,
 				CF11B5601D9187D400BC817D /* TableVC.swift in Sources */,
 				CF11B5621D918ACF00BC817D /* Quizzes.swift in Sources */,
+				CF2A31011D951D2800480541 /* Functions.swift in Sources */,
 				CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */,
 				CFCFB5911D93E47B007E5515 /* Player.swift in Sources */,
 				CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */,
 				CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */,
 				CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */,
+				CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */,
 				CFCFB58F1D9300C1007E5515 /* Quiz.swift in Sources */,
 				CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */,
 				CF11B5491D917ECF00BC817D /* AppDelegate.swift in Sources */,

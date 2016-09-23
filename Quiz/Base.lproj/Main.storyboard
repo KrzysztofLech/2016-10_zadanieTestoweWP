@@ -122,9 +122,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Content" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dhi-Nl-dGP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Content" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dhi-Nl-dGP">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Mp5-ea-A3c"/>
+                                    <constraint firstAttribute="height" constant="80" id="Mp5-ea-A3c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,7 +163,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dhi-Nl-dGP" firstAttribute="top" secondItem="xtD-UI-ARA" secondAttribute="bottom" constant="30" id="4X1-tR-PgP"/>
+                            <constraint firstItem="dhi-Nl-dGP" firstAttribute="top" secondItem="xtD-UI-ARA" secondAttribute="bottom" constant="20" id="4X1-tR-PgP"/>
                             <constraint firstItem="WUR-1n-3mk" firstAttribute="leading" secondItem="pMX-Vc-mYF" secondAttribute="leadingMargin" constant="20" id="69B-Q7-iel"/>
                             <constraint firstItem="xtD-UI-ARA" firstAttribute="leading" secondItem="pMX-Vc-mYF" secondAttribute="leadingMargin" constant="10" id="DtQ-Qc-X6B"/>
                             <constraint firstItem="EJI-Tt-3fc" firstAttribute="top" secondItem="V3Y-8D-5MK" secondAttribute="bottom" constant="20" id="Kau-ng-UOt"/>
@@ -209,8 +209,7 @@
                                     <constraint firstAttribute="height" constant="230" id="brL-iH-MGc"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2p8-td-UZ3">
-                                <color key="backgroundColor" red="1" green="0.75922818790000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2p8-td-UZ3" customClass="Button1" customModule="Quiz" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xD9-4X-xmy"/>
                                 </constraints>
@@ -234,8 +233,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="YAZ-Gl-mue">
-                                <color key="backgroundColor" red="1" green="0.75922818790000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="YAZ-Gl-mue" customClass="Button1" customModule="Quiz" customModuleProvider="target">
                                 <state key="normal" title="Button 2">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -243,8 +241,7 @@
                                     <action selector="buttonSelected:" destination="ANd-g3-04p" eventType="touchUpInside" id="oz4-CS-Fqj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="S40-bD-kmg">
-                                <color key="backgroundColor" red="1" green="0.75922818790000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="S40-bD-kmg" customClass="Button1" customModule="Quiz" customModuleProvider="target">
                                 <state key="normal" title="Button 3">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -252,11 +249,7 @@
                                     <action selector="buttonSelected:" destination="ANd-g3-04p" eventType="touchUpInside" id="su1-sb-R7b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ywu-HN-UwQ">
-                                <color key="backgroundColor" red="1" green="0.75922818790000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="245" id="CAK-xf-bfw"/>
-                                </constraints>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ywu-HN-UwQ" customClass="Button1" customModule="Quiz" customModuleProvider="target">
                                 <state key="normal" title="Button 4">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -279,6 +272,12 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ok" translatesAutoresizingMaskIntoConstraints="NO" id="AzV-NX-4R5">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="0W9-RK-7eM"/>
+                                    <constraint firstAttribute="height" constant="97" id="HdQ-cG-NPy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -289,25 +288,28 @@
                             <constraint firstItem="Vyb-1A-W0I" firstAttribute="top" secondItem="O8w-ii-TTD" secondAttribute="bottom" constant="20" id="BNg-mv-hUa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S40-bD-kmg" secondAttribute="trailing" constant="50" id="GYl-2E-QwW"/>
                             <constraint firstAttribute="trailing" secondItem="O8w-ii-TTD" secondAttribute="trailing" id="HK5-p4-RMU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ywu-HN-UwQ" secondAttribute="trailing" constant="50" id="HUM-oq-A9P"/>
                             <constraint firstItem="O8w-ii-TTD" firstAttribute="top" secondItem="yox-yG-6Wq" secondAttribute="top" id="Hz5-BC-gNz"/>
                             <constraint firstItem="O8w-ii-TTD" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leading" id="JhE-X3-ZO4"/>
                             <constraint firstItem="S40-bD-kmg" firstAttribute="top" secondItem="YAZ-Gl-mue" secondAttribute="bottom" constant="20" id="KIE-vK-4W9"/>
                             <constraint firstItem="YAZ-Gl-mue" firstAttribute="top" secondItem="2p8-td-UZ3" secondAttribute="bottom" constant="20" id="Kqp-xd-19S"/>
                             <constraint firstItem="Vyb-1A-W0I" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="20" id="M2j-n6-ryg"/>
                             <constraint firstItem="wai-YF-2rU" firstAttribute="centerY" secondItem="IxJ-30-YCq" secondAttribute="centerY" id="MJw-bh-RiY"/>
+                            <constraint firstItem="AzV-NX-4R5" firstAttribute="centerY" secondItem="yox-yG-6Wq" secondAttribute="centerY" multiplier="1.25" id="MgD-qm-cfM"/>
                             <constraint firstItem="2p8-td-UZ3" firstAttribute="top" secondItem="Vyb-1A-W0I" secondAttribute="bottom" constant="20" id="NBN-uH-1hC"/>
                             <constraint firstItem="YAZ-Gl-mue" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="RRD-Rc-a3e"/>
                             <constraint firstItem="YAZ-Gl-mue" firstAttribute="height" secondItem="2p8-td-UZ3" secondAttribute="height" id="RdE-8x-Guo"/>
                             <constraint firstItem="IxJ-30-YCq" firstAttribute="centerX" secondItem="yox-yG-6Wq" secondAttribute="centerX" id="Rg7-dw-HbJ"/>
                             <constraint firstItem="S40-bD-kmg" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="T67-M2-GGx"/>
                             <constraint firstItem="2p8-td-UZ3" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="Ugi-Zj-Y8Q"/>
+                            <constraint firstItem="AzV-NX-4R5" firstAttribute="centerX" secondItem="yox-yG-6Wq" secondAttribute="centerX" id="Xcn-jt-Dcw"/>
                             <constraint firstItem="Ywu-HN-UwQ" firstAttribute="top" secondItem="S40-bD-kmg" secondAttribute="bottom" constant="20" id="YUJ-nA-IYn"/>
                             <constraint firstItem="S40-bD-kmg" firstAttribute="height" secondItem="2p8-td-UZ3" secondAttribute="height" id="dry-DH-vSg"/>
+                            <constraint firstItem="Ywu-HN-UwQ" firstAttribute="leading" secondItem="yox-yG-6Wq" secondAttribute="leadingMargin" constant="50" id="fZU-Rl-KaF"/>
                             <constraint firstItem="Zug-x2-pmM" firstAttribute="leading" secondItem="IxJ-30-YCq" secondAttribute="trailing" constant="10" id="nyM-yg-Q7a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vyb-1A-W0I" secondAttribute="trailing" constant="20" id="s1m-Fi-Bx7"/>
                             <constraint firstItem="sap-7B-fn5" firstAttribute="top" secondItem="IxJ-30-YCq" secondAttribute="bottom" constant="40" id="t3U-8S-ihg"/>
                             <constraint firstItem="2ts-Pw-Hpn" firstAttribute="top" secondItem="IxJ-30-YCq" secondAttribute="bottom" constant="5" id="tJv-b2-DHa"/>
-                            <constraint firstItem="Ywu-HN-UwQ" firstAttribute="centerX" secondItem="yox-yG-6Wq" secondAttribute="centerX" id="tMs-fP-Ftc"/>
                             <constraint firstItem="2ts-Pw-Hpn" firstAttribute="centerX" secondItem="IxJ-30-YCq" secondAttribute="centerX" id="yQF-eT-HwI"/>
                             <constraint firstItem="Ywu-HN-UwQ" firstAttribute="height" secondItem="2p8-td-UZ3" secondAttribute="height" id="yV5-dm-Tqk"/>
                         </constraints>
@@ -318,7 +320,7 @@
                         <outlet property="button2" destination="YAZ-Gl-mue" id="tTf-kU-uDl"/>
                         <outlet property="button3" destination="S40-bD-kmg" id="48D-13-UbB"/>
                         <outlet property="button4" destination="Ywu-HN-UwQ" id="qda-K6-QIX"/>
-                        <outlet property="positionB4" destination="tMs-fP-Ftc" id="eYv-HO-fhR"/>
+                        <outlet property="iconImageView" destination="AzV-NX-4R5" id="j7Q-MM-uS1"/>
                         <outlet property="progresBarAllLabel" destination="Zug-x2-pmM" id="SUv-LI-eXR"/>
                         <outlet property="progresBarDoneLabel" destination="wai-YF-2rU" id="ahM-pb-gGM"/>
                         <outlet property="progresBarPercentLabel" destination="2ts-Pw-Hpn" id="9xk-Ye-mss"/>
@@ -400,4 +402,7 @@
             <point key="canvasLocation" x="-767" y="376"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_ok" width="300" height="291"/>
+    </resources>
 </document>

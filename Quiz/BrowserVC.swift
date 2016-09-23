@@ -27,6 +27,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
 
     
     //MARK: - System methods
+    //----------------------------------------------------------------------------------------------------------------------
     
     // ukrycie Status Bara
     override var prefersStatusBarHidden: Bool {
@@ -39,11 +40,6 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
 
         pagesNumber = quizzes?.items?.count
 
-/*
-        // tworzymy pierwszą stronę
-        let vc = viewControllerAtIndex(0)
-        controllers.append(vc!)
-*/
         
         // tworzymy pierwsze 3 strony
         for index in 0...2 {
@@ -78,10 +74,9 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     }
     
     
-    /// ----------------------------------------------------------------------------------------------------------------------------------
     
     // MARK: - Methods
-    
+    //----------------------------------------------------------------------------------------------------------------------
     
     func viewControllerAtIndex(_ index: Int) -> BrowserContentVC! {
         
@@ -121,6 +116,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     
     // MARK: - DataSource methods
+    //----------------------------------------------------------------------------------------------------------------------
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let index = controllers.index(of: viewController) {
@@ -147,6 +143,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     
     // MARK: - Delegate methods
+    //----------------------------------------------------------------------------------------------------------------------
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         nextPageIndex = controllers.index(of: pendingViewControllers[0])!
@@ -180,6 +177,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     }
 
     // MARK: - Other Methods
+    //----------------------------------------------------------------------------------------------------------------------
     
     func loadImage(index: Int) {
         let queue = DispatchQueue(label: "image", qos: .background, target: nil)
