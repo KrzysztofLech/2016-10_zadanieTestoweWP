@@ -14,12 +14,14 @@ class BrowserContentVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var questionsLabel: UILabel!
     
     var quizTitle: String!
     var quizImage: UIImage!
     var quizCategory: String!
     var quizContent: String!
+    var quizResult: String!
     var quizQuestionAmount: Int!
     
     
@@ -31,8 +33,10 @@ class BrowserContentVC: UIViewController {
         imageView.image = quizImage
         categoryLabel.text = quizCategory
         contentLabel.text = quizContent
+        resultLabel.text = quizResult
         questionsLabel.text = "Liczba pytań: \(quizQuestionAmount!)"
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         imageView.layer.shadowColor = UIColor.black.cgColor

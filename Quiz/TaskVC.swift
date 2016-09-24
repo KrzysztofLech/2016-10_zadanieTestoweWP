@@ -154,7 +154,7 @@ class TaskVC: UIViewController {
     
     
     func getPlayerData() {
-        // odczytujemy dane gracza i sprawdzamy, czy rozwiązywał bieżący test
+        // odczytujemy dane gracza i sprawdzamy, czy rozwiązywał bieżący quiz
         // jeśli tak, to uaktualniamy dane quizu po to, aby kontynuować od ostatnio zakończonego pytania
         var playerData = [PlayerQuiz]()
         playerData = readPlayerData()

@@ -52,7 +52,7 @@ func showDataFilePath() {
 
 
 
-
+// funkcja odczytuje zapisuje dane o postępach gracza
 func readPlayerData() -> [PlayerQuiz] {
     
     var playerData = [PlayerQuiz]()
@@ -114,44 +114,3 @@ func writePlayerData(_ dataToWrite: PlayerQuiz) {
 }
 
 
-
-
-/*
- // funkcja zapisuje dane gracza
- func writePlayerData() {
- 
- let defaults = UserDefaults.standard
- 
- 
- var playerData = [PlayerQuiz]()
- let wpis1 = PlayerQuiz()
- wpis1.id = 100
- wpis1.completed = true
- wpis1.questionsCompleted = 1
- wpis1.questionsCompletedPercent = 10.0
- playerData.append(wpis1)
- 
- 
- let wpis2 = PlayerQuiz()
- wpis2.id = 200
- wpis2.completed = false
- wpis2.questionsCompleted = 2
- wpis2.questionsCompletedPercent = 20.0
- playerData.append(wpis2)
- 
- 
- defaults.set(playerData, forKey: "PlayerData")
- //defaults.synchronize()
- }
- 
- 
- func readPlayerData() -> [PlayerQuiz] {
- 
- let defaults = UserDefaults.standard
- let playerData = defaults.object(forKey:"PlayerData") as? [PlayerQuiz] ?? [PlayerQuiz]()
- 
- print("Odczytano tablicę z \(playerData.count) elementami")
- 
- return playerData
- }
- */

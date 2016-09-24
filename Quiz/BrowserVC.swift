@@ -103,11 +103,14 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         let quizContent = quizzes?.items?[index].content
         let quizQuestionAmount = quizzes?.items?[index].questions
         
+        let quizResult = checkPlayerData(quizID: (quizzes?.items?[index].id)!)
+        
         pageContentVC.quizTitle = quizTitle
         pageContentVC.quizImage = quizImage
         pageContentVC.quizCategory = quizCategory
         pageContentVC.quizContent = quizContent
         pageContentVC.quizQuestionAmount = quizQuestionAmount
+        pageContentVC.quizResult = quizResult
         
         return pageContentVC
     }
@@ -178,6 +181,32 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
 
     // MARK: - Other Methods
     //----------------------------------------------------------------------------------------------------------------------
+    
+    func checkPlayerData(quizID: Int) -> String {
+        // odczytujemy dane gracza i sprawdzamy, czy rozwiązywał dany quiz
+        // jeśli tak, to pobieramy wynik i przekazujemy stringa z opisem
+        var text = "Nie znasz tego quizu!"
+        
+        var playerData = [PlayerQuiz]()
+        playerData = readPlayerData()
+        
+        //przeszukujemy dane o quizach gracza w poszukiwaniu takiego o podanym ID
+        for item in playerData {
+            if item.id == quizID {
+                if item.completed {
+                    text = String(format: "Ostatni wynik: %0.0f%@", item.questionsCompletedPercent, "%")
+                } else {
+                    if item.questionsCompleted > 4 { text = "Odpowiedziano na \(item.questionsCompleted) pytań" }
+                    else if item.questionsCompleted > 1 { text = "Odpowiedziano na \(item.questionsCompleted) pytania" }
+                    else if item.questionsCompleted == 1 { text = "Odpowiedziano na 1 pytanie" }
+                    else if item.questionsCompleted == 0 { text = "Nie odpowiedziano na żadne pytanie" }
+                }
+            }
+        }
+        return text
+    }
+    
+    
     
     func loadImage(index: Int) {
         let queue = DispatchQueue(label: "image", qos: .background, target: nil)
