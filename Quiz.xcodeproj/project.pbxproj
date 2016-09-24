@@ -19,6 +19,7 @@
 		CF2816F81D954BDD00FDDAF8 /* Label1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2816F71D954BDD00FDDAF8 /* Label1.swift */; };
 		CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A30FE1D951D1100480541 /* Extensions.swift */; };
 		CF2A31011D951D2800480541 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A31001D951D2800480541 /* Functions.swift */; };
+		CF6184B81D96A39800D4C77C /* PlayerQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6184B71D96A39800D4C77C /* PlayerQuiz.swift */; };
 		CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5791D92504F007E5515 /* FirstVC.swift */; };
 		CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */; };
 		CFCFB5801D925CDB007E5515 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */; };
@@ -26,7 +27,6 @@
 		CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5881D92DB6B007E5515 /* Button1.swift */; };
 		CFCFB58D1D92DDC5007E5515 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */; };
 		CFCFB58F1D9300C1007E5515 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB58E1D9300C1007E5515 /* Quiz.swift */; };
-		CFCFB5911D93E47B007E5515 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5901D93E47B007E5515 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +44,7 @@
 		CF2816F71D954BDD00FDDAF8 /* Label1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label1.swift; sourceTree = "<group>"; };
 		CF2A30FE1D951D1100480541 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CF2A31001D951D2800480541 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		CF6184B71D96A39800D4C77C /* PlayerQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerQuiz.swift; sourceTree = "<group>"; };
 		CFCFB5791D92504F007E5515 /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserContentVC.swift; sourceTree = "<group>"; };
 		CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		CFCFB5881D92DB6B007E5515 /* Button1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button1.swift; sourceTree = "<group>"; };
 		CFCFB58C1D92DDC5007E5515 /* GradientBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		CFCFB58E1D9300C1007E5515 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
-		CFCFB5901D93E47B007E5515 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 			children = (
 				CF11B5611D918ACF00BC817D /* Quizzes.swift */,
 				CFCFB58E1D9300C1007E5515 /* Quiz.swift */,
-				CFCFB5901D93E47B007E5515 /* Player.swift */,
+				CF6184B71D96A39800D4C77C /* PlayerQuiz.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -227,7 +227,6 @@
 				CF11B5621D918ACF00BC817D /* Quizzes.swift in Sources */,
 				CF2A31011D951D2800480541 /* Functions.swift in Sources */,
 				CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */,
-				CFCFB5911D93E47B007E5515 /* Player.swift in Sources */,
 				CF2816F41D953FB200FDDAF8 /* Button2.swift in Sources */,
 				CF2816F21D95368200FDDAF8 /* FinishVC.swift in Sources */,
 				CFCFB5891D92DB6B007E5515 /* Button1.swift in Sources */,
@@ -235,6 +234,7 @@
 				CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */,
 				CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */,
 				CF2816F81D954BDD00FDDAF8 /* Label1.swift in Sources */,
+				CF6184B81D96A39800D4C77C /* PlayerQuiz.swift in Sources */,
 				CFCFB58F1D9300C1007E5515 /* Quiz.swift in Sources */,
 				CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */,
 				CF11B5491D917ECF00BC817D /* AppDelegate.swift in Sources */,

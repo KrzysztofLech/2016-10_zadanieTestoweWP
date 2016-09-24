@@ -30,13 +30,13 @@ class TaskVC: UIViewController {
     
     // MARK: - Properties
     
-    var quiz: Quiz?
+    var quiz: Quiz?                             // parametry quizu odczytane z JSON'a
     
     var quizID: Int!                            // identyfikator potrzebny do popbrania danych quizu
     var quizImage: UIImage?                     // zdjęcie przekazne z poprzedniego widoku
     
-    var playerQuiz: PlayerQuiz!                 // dane gracza dotyczące quizu
-    //var playerData: [Int: PlayerQuiz]!
+    var playerQuiz: PlayerQuiz!                 // dane gracza dotyczące aktualnego quizu
+    
     var allQuestionAmount: Int!                 // liczba wszystkich pytań w quizie
     var playerDoneQuestions: Int = 0 {          // ile pytań zostało wykonanych
         didSet {
@@ -87,7 +87,8 @@ class TaskVC: UIViewController {
         super.viewDidLoad()
 
         readJsonData()                          // odczyt danych quizu
-        readPlayerData()                        // odczyt danych gracza
+        createPlayerQuizData()                  // tworzymy początkowe osiągnięcia gracza w bieżącym quizie
+        getPlayerData()                         // odczyt danych gracza
 
         setUpQuestion(playerDoneQuestions)      // konfiguracja widoku dla danego pytania
     }
@@ -143,41 +144,30 @@ class TaskVC: UIViewController {
     }
 
     
-    
-    func readPlayerData() {
-        
-        playerQuiz = PlayerQuiz()
-        readWritedPlayerData()          // odczyt zapisanych danych gracza
-        
-        //playerDoneQuestions = playerQuiz.questionsCompleted
-        
-
-/*
-        let id = 12345
-        let playerQuiz = PlayerQuiz()
-        
-        playerData[id] = playerQuiz
-
-        if playerData[123454] != nil {
-            print(playerData[id]?.questionsCompleted)
-        } else {
-            print("nie ma")
-        }
- */
+    func createPlayerQuizData() {
+        playerQuiz = PlayerQuiz(
+            id: quizID,
+            completed: false,
+            questionsCompleted: 0,
+            questionsCompletedPercent: 0.0)
     }
     
-    func readWritedPlayerData() {
+    
+    func getPlayerData() {
+        // odczytujemy dane gracza i sprawdzamy, czy rozwiązywał bieżący test
+        // jeśli tak, to uaktualniamy dane quizu po to, aby kontynuować od ostatnio zakończonego pytania
+        var playerData = [PlayerQuiz]()
+        playerData = readPlayerData()
         
-        let playerData = [Int: PlayerQuiz]()
-        
-        /// tu ma być metoda odczytu
-        
-        // sprawdzamy czy ID quizu jest w danych gracza
-        // jeśli jest, to uaktualniamy dane quizu
-        if let data = playerData[quizID] {
-            playerQuiz = data
+        for item in playerData {
+            if item.id == quizID {
+                playerDoneQuestions = item.questionsCompleted
+                questionsCompletedPercent = item.questionsCompletedPercent
+                if item.completed == true { questionsCompletedPercent = 0.0 }   // jeśli rozwiązujemy ponownie od początku
+            }
         }
     }
+    
     
 
     
@@ -249,7 +239,17 @@ class TaskVC: UIViewController {
             iconImageView.image = #imageLiteral(resourceName: "icon_wrong")
         }
         playerDoneQuestions += 1    // koleny pytanie quizu zrobione
-        writePlayerData()           // zapisujemy osiągnięcia gracza
+        
+        //playerQuiz.questionsCompleted = playerDoneQuestions
+        //playerQuiz.questionsCompletedPercent = questionsCompletedPercent
+        
+                print("id: \(playerQuiz.id)")
+                print("completed: \(playerQuiz.completed)")
+                print("zrobiono pytań: \(playerQuiz.questionsCompleted)")
+                print("procent: \(playerQuiz.questionsCompletedPercent)")
+                print("")
+        
+        writePlayerData(playerQuiz) // zapisujemy osiągnięcia gracza
         showIcon()                  // pokazuje ikonę dobrej lub złej odpowiedzi
         
         hideButtonsAndQuestion()    // chowamy przyciski i pytanie -> pokazujemy nowe lub kończymy quiz
@@ -290,12 +290,13 @@ class TaskVC: UIViewController {
                 }
         })
     }
- 
+     
     
     func showFinish() {
         
         playerQuiz.completed = true     // zapisujemy informację o ukończeniu quizu
-        writePlayerData()
+        playerQuiz.questionsCompleted = 0   // ustawiamy na 0, aby można rozpocząć quiz od początku
+        writePlayerData(playerQuiz)     // zapisujemy osiągnięcia gracza
         
         let finishVC = storyboard?.instantiateViewController(withIdentifier: "FinishVC") as! FinishVC
         finishVC.quiz = quiz

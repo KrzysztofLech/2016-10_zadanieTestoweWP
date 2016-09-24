@@ -10,19 +10,59 @@ import UIKit
 
 class FirstVC: UIViewController {
 
-    
+    var playerData = [PlayerQuiz]()
     var quizzes: Quizzes?
-    var firstItem = 0
 
+
+    
+    
+    // MARK: - View Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        readData()
-        loadFirstImages()
+        /// sprawdź połączenie z internetem
+        
+        //showDataFilePath()
+        //utworzPrzykladoweDaneGracza()
+        
+        
+        playerData = readPlayerData()
+        print("odczytane dane mają \(playerData.count) pozycji")
+        //print("id: \(playerData[0].id) zrobiono pytań: \(playerData[0].questionsCompleted), procent: \(playerData[0].questionsCompletedPercent)")
+        
+        readData()            // odczyt danych JSON - 100 quizów
+        loadFirstImages()     // pobieramy zdjęcia kilku początkowych quizów
     }
 
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    
+    /// Tworze przykładowe dane gracza
+    func utworzPrzykladoweDaneGracza() {
+        
+        
+        let wpis1 = PlayerQuiz(
+            id: 6040449124353153,
+            completed: false,
+            questionsCompleted: 3,
+            questionsCompletedPercent: 50.0)
+        playerData.append(wpis1)
+        writePlayerData(wpis1)
+
+    }
+    
+    
+    
+    
+    // MARK: - Other Methods
+    
+    
+    // odczyt danych JSON - 100 quizów
     func readData() {
         let url = URL(string: "http://quiz.o2.pl/api/v1/quizzes/0/100")
         let jsonString = try! String(contentsOf: url!)
@@ -35,18 +75,20 @@ class FirstVC: UIViewController {
         //print("Załadowano dane")
     }
     
+    
+    // pobieramy zdjęcia kilku początkowych quizów
     func loadFirstImages() {
-        
-        // pobieramy zdjęcia kilku początkowych quizów
-        
-        for index in firstItem ... (firstItem + 2) {
-            
+        for index in 0...2 {
+/*
             let queue = DispatchQueue(label: "images", qos: .background, target: nil)
             queue.async {
                 self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
                 print("Pobrano zdjęcie \(index)")
             }
+ */
+         quizzes?.items?[index].loadImages(size: self.view.frame.size)
         }
+        print("3 pierwsze zdjęcia pobrane!!!!")
     }
     
     

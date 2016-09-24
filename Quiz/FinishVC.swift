@@ -65,7 +65,7 @@ class FinishVC: UIViewController {
         playerQuiz.completed = false
         playerQuiz.questionsCompleted = 0
         playerQuiz.questionsCompletedPercent = 0.0
-        writePlayerData()
+        writePlayerData(playerQuiz)     // zapisujemy osiągnięcia gracza
         
         // przechodzimy do widoku odpowiedzi
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC

@@ -56,7 +56,6 @@ class TableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC
         
         taskVC.quizID = quizzes?.items?[indexPath.row].id
