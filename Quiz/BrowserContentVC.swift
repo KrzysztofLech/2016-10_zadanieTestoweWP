@@ -39,6 +39,8 @@ class BrowserContentVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         imageView.layer.shadowColor = UIColor.black.cgColor
         imageView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         imageView.layer.shadowRadius = 10.0

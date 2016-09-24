@@ -20,7 +20,7 @@ class FinishVC: UIViewController {
     
     
     
-    // MARK: - System Methods
+    // MARK: - View Methods
     //----------------------------------------------------------------------------------------------------------------------
     
     // ukrycie Status Bara
@@ -39,6 +39,8 @@ class FinishVC: UIViewController {
         resultLabel.text = resultString
     }
 
+    // MARK: - Other Methods
+    //----------------------------------------------------------------------------------------------------------------------
 
     func getComment() {
         let playerResult = playerQuiz.questionsCompletedPercent

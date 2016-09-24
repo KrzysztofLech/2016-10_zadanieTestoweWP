@@ -11,6 +11,8 @@ import UIKit
 class TaskVC: UIViewController {
 
     // MARK: - Outlets
+    //----------------------------------------------------------------------------------------------------------------------
+    
     @IBOutlet weak var quizImageView: UIImageView!
     @IBOutlet weak var quizQuestionNumber: UILabel!
     @IBOutlet weak var quizQuestionLabel: UILabel!
@@ -29,6 +31,7 @@ class TaskVC: UIViewController {
     
     
     // MARK: - Properties
+    //----------------------------------------------------------------------------------------------------------------------
     
     var quiz: Quiz?                             // parametry quizu odczytane z JSON'a
     
@@ -52,13 +55,25 @@ class TaskVC: UIViewController {
 
     
     
-    // MARK: - System Methods
+    // MARK: - View Methods
     //----------------------------------------------------------------------------------------------------------------------
     
     // ukrycie Status Bara
     override var prefersStatusBarHidden: Bool {
         get { return true }
     }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        readJsonData()                          // odczyt danych quizu
+        createPlayerQuizData()                  // tworzymy początkowe osiągnięcia gracza w bieżącym quizie
+        getPlayerData()                         // odczyt danych gracza
+        
+        setUpQuestion(playerDoneQuestions)      // konfiguracja widoku dla danego pytania
+    }
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,18 +94,6 @@ class TaskVC: UIViewController {
             showButton(button)
             scaleImageAnimation()
         }
-    }
-    
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        readJsonData()                          // odczyt danych quizu
-        createPlayerQuizData()                  // tworzymy początkowe osiągnięcia gracza w bieżącym quizie
-        getPlayerData()                         // odczyt danych gracza
-
-        setUpQuestion(playerDoneQuestions)      // konfiguracja widoku dla danego pytania
     }
 
     
@@ -240,18 +243,8 @@ class TaskVC: UIViewController {
         }
         playerDoneQuestions += 1    // koleny pytanie quizu zrobione
         
-        //playerQuiz.questionsCompleted = playerDoneQuestions
-        //playerQuiz.questionsCompletedPercent = questionsCompletedPercent
-        
-                print("id: \(playerQuiz.id)")
-                print("completed: \(playerQuiz.completed)")
-                print("zrobiono pytań: \(playerQuiz.questionsCompleted)")
-                print("procent: \(playerQuiz.questionsCompletedPercent)")
-                print("")
-        
         writePlayerData(playerQuiz) // zapisujemy osiągnięcia gracza
         showIcon()                  // pokazuje ikonę dobrej lub złej odpowiedzi
-        
         hideButtonsAndQuestion()    // chowamy przyciski i pytanie -> pokazujemy nowe lub kończymy quiz
     }
     

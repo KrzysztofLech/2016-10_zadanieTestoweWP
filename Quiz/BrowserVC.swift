@@ -11,6 +11,7 @@ import UIKit
 class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     //MARK: - Properties
+    //----------------------------------------------------------------------------------------------------------------------
     
     var quizzes: Quizzes?
 
@@ -26,7 +27,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     @IBOutlet weak var button: UIButton!
 
     
-    //MARK: - System methods
+    //MARK: - View methods
     //----------------------------------------------------------------------------------------------------------------------
     
     // ukrycie Status Bara
@@ -209,7 +210,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     
     func loadImage(index: Int) {
-        let queue = DispatchQueue(label: "image", qos: .background, target: nil)
+        let queue = DispatchQueue(label: "image", qos: .userInitiated, target: nil)
         queue.async {
             self.quizzes?.items?[index].loadImages(size: self.imageSize)
         }

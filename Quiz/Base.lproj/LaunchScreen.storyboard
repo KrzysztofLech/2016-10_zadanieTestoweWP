@@ -34,6 +34,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="hCv-wd-IKJ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="2VM-je-fyk"/>
+                                    <constraint firstAttribute="height" constant="250" id="VmE-bt-aTb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -41,8 +47,10 @@
                             <constraint firstItem="e0N-r0-34p" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="H1w-rl-IQB"/>
                             <constraint firstItem="e0N-r0-34p" firstAttribute="top" secondItem="Phq-pp-5qR" secondAttribute="bottom" constant="5" id="LdR-5U-csR"/>
                             <constraint firstItem="P04-YD-dgg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aYE-zd-BT7"/>
+                            <constraint firstItem="hCv-wd-IKJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="awT-ug-qik"/>
                             <constraint firstItem="P04-YD-dgg" firstAttribute="top" secondItem="e0N-r0-34p" secondAttribute="bottom" constant="30" id="ePT-k0-ZUE"/>
-                            <constraint firstItem="Phq-pp-5qR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.8" id="fjn-Y4-ubk"/>
+                            <constraint firstItem="hCv-wd-IKJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.6" id="ebd-Rg-he7"/>
+                            <constraint firstItem="Phq-pp-5qR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.2" id="fjn-Y4-ubk"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -51,4 +59,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="250" height="250"/>
+    </resources>
 </document>
