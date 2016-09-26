@@ -17,20 +17,37 @@ class TableVC: UITableViewController {
     var quizzes: Quizzes?
     var playerData = [PlayerQuiz]()
     
+    var amountAllQuizzes: Int?      // liczba wszystkich quizów
+    var counter = 0 {               // licznik pobranych zdjęć
+        didSet {
+            if counter < amountAllQuizzes! {
+                loadQuizImage(counter)
+            }
+        }
+    }
+
+    
     
     //MARK: - View methods
     //----------------------------------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // ładujemy w tle zdjęcia quizów
-        loadAllImages()
-        
+
         // odczytujemy dane gracza o wykonanych quizach
         playerData = readPlayerData()
+        
+        // uruchamiamy 4 wątki ładujące w tle zdjęcia quizów
+        counter = 3     // zaczynamy od 3, gdyż tyle zdjęć wcześniej pobrano
+        counter += 1
+        counter += 1
+        counter += 1
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        counter = 1000      // przechodząc do innego widoku kończymy pobieranie zdjęć
+    }
+
     
     
     
@@ -78,23 +95,23 @@ class TableVC: UITableViewController {
     // MARK: - Other methods
     //----------------------------------------------------------------------------------------------------------------------
     
-    func loadAllImages() {
-        let itemsNumber = quizzes?.count
-        let size = view.frame.size
-        for index in 3..<itemsNumber! {
+    
+    // funkcja pobiera zdjęcia quizów
+    func loadQuizImage(_ index: Int) {
+        // sprawdzamy, czy zdjęcie nie zostało już wcześniej pobrane
+        if quizzes?.items?[index].mainPhoto?.smallImage == nil {
             
-            // sprawdzamy, czy zdjęcie nie zostało już pobrane
-            if quizzes?.items?[index].mainPhoto?.smallImage == nil {
-                let queue = DispatchQueue(label: "image", qos: .userInitiated, target: nil)
-                queue.async {
-                    self.quizzes?.items?[index].loadImages(size: size)
-                    
-                    print("pobrano zdjęcie quizu nr \(index)")
-                }
+            DispatchQueue.global(qos: .background).async { [unowned self] in
+                let size = self.view.frame.size
+                self.quizzes?.items?[index].loadImages(size: size)
+                print("pobrano zdjęcie quizu nr \(index)")
+                
+                self.counter += 1
             }
         }
     }
 
+    
     func checkPlayerData(quizID: Int) -> String {
         // odczytujemy dane gracza i sprawdzamy, czy rozwiązywał dany quiz
         // jeśli tak, to pobieramy wynik i przekazujemy stringa z opisem

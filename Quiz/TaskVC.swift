@@ -139,11 +139,13 @@ class TaskVC: UIViewController {
     func readJsonData() {
         let urlString = "http://quiz.o2.pl/api/v1/quiz/" + String(describing: quizID!) + "/0"
         let url = URL(string: urlString)
-        let jsonString = try! String(contentsOf: url!)
-        let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
-        let json = JSON(data: jsonData)
         
-        quiz = Quiz(json: json)
+        if let jsonString = try? String(contentsOf: url!) {
+            let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
+            let json = JSON(data: jsonData)
+            
+            quiz = Quiz(json: json)
+        }
     }
 
     

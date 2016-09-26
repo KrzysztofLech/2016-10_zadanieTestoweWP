@@ -14,6 +14,7 @@ class FirstVC: UIViewController {
     var quizzes: Quizzes?
     let imagesToLoad = 3                // ilość zdjęć wstępnie ładowanych
     var counterLoadedImages = 0         // licznik załadowanych zdjęć
+    var isDataLoaded = false            // czy dane JSON zostały pobrane
 
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var label1: UILabel!
@@ -32,21 +33,9 @@ class FirstVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        /// sprawdźić połączenie z internetem
-        
-        //showDataFilePath()
-        //utworzPrzykladoweDaneGracza()
-        
         
         playerData = readPlayerData()
-        
-        //print("odczytane dane mają \(playerData.count) pozycji")
-        //print("id: \(playerData[0].id) zrobiono pytań: \(playerData[0].questionsCompleted), procent: \(playerData[0].questionsCompletedPercent)")
-        
-        readData()            // odczyt danych JSON - 100 quizów
-        loadFirstImages()     // pobieramy zdjęcia kilku początkowych quizów
+        //showDataFilePath()
     }
 
     
@@ -54,8 +43,16 @@ class FirstVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        animations1()
+        readData()                              // odczyt danych JSON - 100 quizów
+        if isDataLoaded { start() }
     }
+    
+    
+    func start() {
+        loadFirstImages()     // pobieramy zdjęcia kilku początkowych quizów
+        animations1()         // jeśli dane zostały pobrane uruchamiamy animację
+    }
+    
     
     // MARK: - Animations
     //----------------------------------------------------------------------------------------------------------------------
@@ -105,7 +102,7 @@ class FirstVC: UIViewController {
             },
             completion: { _ in
                 self.label1.alpha = 0.0
-                self.infoLabel.text = "Wybierz listę quizów"
+                self.infoLabel.text = "Wybierz sposób wyświetlenia quizów"
         })
     }
     
@@ -114,34 +111,51 @@ class FirstVC: UIViewController {
     // MARK: - Other Methods
     //----------------------------------------------------------------------------------------------------------------------
     
-    
-    // odczyt danych JSON - 100 quizów
+    // odczyt danych JSON - paczki 100 quizów
     func readData() {
+        
         let url = URL(string: "http://quiz.o2.pl/api/v1/quizzes/0/100")
-        let jsonString = try! String(contentsOf: url!)
-        
-        let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
-        let json = JSON(data: jsonData)
-        
-        quizzes = Quizzes(json: json)
-        
-        //print("Załadowano dane")
+        if let jsonString = try? String(contentsOf: url!) {
+            let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
+            let json = JSON(data: jsonData)
+            quizzes = Quizzes(json: json)
+            isDataLoaded = true
+            //print("Załadowano dane")
+            return
+        }
+        showError()
     }
     
     
     // pobieramy zdjęcia kilku początkowych quizów
     func loadFirstImages() {
         for index in 0...(imagesToLoad - 1) {
-
-            let queue = DispatchQueue(label: "images", qos: .userInitiated, target: nil)
-            queue.async {
-                self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
-                self.counterLoadedImages += 1
-                //print("Pobrano zdjęcie \(index)")
+            // sprawdzamy, czy zdjęcie nie zostało już wcześniej pobrane
+            if quizzes?.items?[index].mainPhoto?.smallImage == nil {
+                DispatchQueue.global(qos: .background).async { [unowned self] in
+                    self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
+                    self.counterLoadedImages += 1
+                    print("Pobrano zdjęcie \(index)")
+                }
             }
         }
     }
     
+    
+    func showError() {
+        let ac = UIAlertController(
+            title: "Problem z Internetem!",
+            message: "Pojawił się problem podczas pobierania danych.",
+            preferredStyle: .alert)
+        ac.addAction(UIAlertAction(
+            title: "Spróbuj ponownie",
+            style: .default,
+            handler: {_ in
+                self.readData()
+                if self.isDataLoaded { self.start() }
+        }))
+        present(ac, animated: true)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -149,11 +163,13 @@ class FirstVC: UIViewController {
         if segue.identifier == "tableSegue" {
             let controler = segue.destination as! TableVC
             controler.quizzes = quizzes
+            controler.amountAllQuizzes = quizzes?.count
         }
 
         else if segue.identifier == "browserSegue" {
             let controler = segue.destination as! BrowserVC
             controler.quizzes = quizzes
+            controler.amountAllQuizzes = quizzes?.count
         }
     }
     

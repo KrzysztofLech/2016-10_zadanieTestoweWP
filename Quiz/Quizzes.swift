@@ -71,18 +71,23 @@ class Item {
     func loadImages(size: CGSize) {
         let quizImageURL = mainPhoto?.url
         let imageURL = URL(string: quizImageURL!)
-        let data = try! Data(contentsOf: imageURL!)
-        let image = UIImage(data: data)!
         
-        //print("Pobrano zdjęcie: \(title!)")
-        
-        let smallImage = image.resizedImageWithBounds(bounds: size)
-        let mediumImage = image.resizedImageWithBounds(bounds: CGSize(
-            width: size.width * 2,
-            height: size.height * 2))
-
-        mainPhoto?.smallImage = smallImage
-        mainPhoto?.mediumImage = mediumImage
+        if let data = try? Data(contentsOf: imageURL!) {
+            let image = UIImage(data: data)!
+            
+            //print("Pobrano zdjęcie: \(title!)")
+            
+            let smallImage = image.resizedImageWithBounds(bounds: size)
+            let mediumImage = image.resizedImageWithBounds(bounds: CGSize(
+                width: size.width * 2,
+                height: size.height * 2))
+            
+            mainPhoto?.smallImage = smallImage
+            mainPhoto?.mediumImage = mediumImage
+            
+            return
+        }
+        print("*** Pojawił się jakiś problem podczas pobierania danych ***")
     }
 }
 

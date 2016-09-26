@@ -14,6 +14,15 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     //----------------------------------------------------------------------------------------------------------------------
     
     var quizzes: Quizzes?
+    
+    var amountAllQuizzes: Int?      // liczba wszystkich quizów
+    var counter = 0 {               // licznik pobranych zdjęć
+        didSet {
+            if counter < amountAllQuizzes! {
+                loadQuizImage(counter)
+            }
+        }
+    }
 
     var pageVC = UIPageViewController()
     var controllers = [UIViewController]()
@@ -35,22 +44,30 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         get { return true }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        counter = 1000      // przechodząc do innego widoku kończymy pobieranie zdjęć
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // określamy wielkość ładowanych zdjęć
+        imageSize = view.frame.size
+        
+        
+        // uruchamiamy 4 wątki ładujące w tle zdjęcia quizów
+        counter = 3     // zaczynamy od 3, gdyż tyle zdjęć wcześniej pobrano
+        //counter += 1
+        //counter += 1
+        //counter += 1
 
-        pagesNumber = quizzes?.items?.count
-
+        pagesNumber = amountAllQuizzes        
         
         // tworzymy pierwsze 3 strony
         for index in 0...2 {
             let vc = viewControllerAtIndex(index)
             controllers.append(vc!)
         }
-        
-        // określamy wielkość ładowanych zdjęć
-        imageSize = view.frame.size
-        
 
         // ustawiamy parametry Page Controller i pierwszą stronę do wyświetlenia
         pageVC = storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! UIPageViewController
@@ -162,12 +179,10 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
                 
                 // ładujemy kolejne zdjęcie do kontrolera 2 pozycje dalej
                 let newPageIndex = currentPageIndex + 2
-                let nextImage = quizzes?.items?[newPageIndex].mainPhoto?.mediumImage
-                if nextImage == nil {
-                    // pobieranie kolejnego zdjęcia w tle
-                    loadImage(index: newPageIndex)
-                }
                 
+                //let nextImage = quizzes?.items?[newPageIndex].mainPhoto?.mediumImage
+                //if nextImage == nil { loadImage(index: newPageIndex) }      // pobieranie kolejnego zdjęcia w tle
+
                 // tworzymy kontroler dla strony 2 pozycje dalej
                 let vc = viewControllerAtIndex(newPageIndex)
                 controllers.append(vc!)
@@ -208,14 +223,31 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     }
     
     
-    
-    func loadImage(index: Int) {
-        let queue = DispatchQueue(label: "image", qos: .userInitiated, target: nil)
-        queue.async {
-            self.quizzes?.items?[index].loadImages(size: self.imageSize)
+    // funkcja pobiera zdjęcia quizów
+    func loadQuizImage(_ index: Int) {
+        // sprawdzamy, czy zdjęcie nie zostało już wcześniej pobrane
+        if quizzes?.items?[index].mainPhoto?.mediumImage == nil {
+            
+            DispatchQueue.global(qos: .background).async { [unowned self] in
+                self.quizzes?.items?[index].loadImages(size: self.imageSize)
+                print("pobrano zdjęcie quizu nr \(index)")
+                
+                self.counter += 1
+            }
         }
     }
     
+    
+/*
+    func loadImage(index: Int) {
+        DispatchQueue.global(qos: .background).async { [unowned self] in
+            self.quizzes?.items?[index].loadImages(size: self.imageSize)
+            print("pobrano zdjęcie nr \(index)")
+        }
+    }
+
+*/
+ 
     @IBAction func buttonSelected(_ sender: UIButton) {
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC
         
