@@ -69,10 +69,12 @@ class Item {
     }
     
     func loadImages(size: CGSize) {
+        //var error: Error?
         let quizImageURL = mainPhoto?.url
         let imageURL = URL(string: quizImageURL!)
         
-        if let data = try? Data(contentsOf: imageURL!) {
+        do {
+            let data = try Data(contentsOf: imageURL!)
             let image = UIImage(data: data)!
             
             //print("Pobrano zdjęcie: \(title!)")
@@ -84,11 +86,14 @@ class Item {
             
             mainPhoto?.smallImage = smallImage
             mainPhoto?.mediumImage = mediumImage
-            
-            return
-        }
-        print("*** Pojawił się jakiś problem podczas pobierania danych ***")
+
+            } catch {
+                // handle error
+                print("*** Problem z pobieraniem zdjęć ***")
+                //print(error)
+            }
     }
+        
 }
 
 

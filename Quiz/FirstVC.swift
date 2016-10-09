@@ -13,7 +13,7 @@ class FirstVC: UIViewController {
     var playerData = [PlayerQuiz]()
     var quizzes: Quizzes?
     let imagesToLoad = 3                // ilość zdjęć wstępnie ładowanych
-    var counterLoadedImages = 0         // licznik załadowanych zdjęć
+    var counterLoadedImages = 0         // licznik załadowanych wstępnie zdjęć
     var isDataLoaded = false            // czy dane JSON zostały pobrane
 
     @IBOutlet weak var logoView: UIImageView!
@@ -22,9 +22,21 @@ class FirstVC: UIViewController {
     @IBOutlet weak var label3: UILabel!
     @IBOutlet weak var button1: Button1!
     @IBOutlet weak var button2: Button2!
+    @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
 
+    var counter: Int = 0 {              // licznik pobieranych zdjęć
+        didSet {
+            let fractionalProgress: Float = Float(counter) / 100.0
+            
+            DispatchQueue.main.async { [unowned self] in
+                self.progressView.setProgress(fractionalProgress, animated: true)
+            }
+            //print(fractionalProgress)
+        }
+    }
     
     
     // MARK: - View Methods
@@ -99,6 +111,7 @@ class FirstVC: UIViewController {
                 self.label1.alpha = 0.0
                 self.button1.center.x -= self.view.frame.width
                 self.button2.center.x += self.view.frame.width
+                self.button3.alpha = 1.0
             },
             completion: { _ in
                 self.label1.alpha = 0.0
@@ -173,5 +186,26 @@ class FirstVC: UIViewController {
         }
     }
     
+    @IBAction func loadDataButton(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.progressView.alpha = 1.0
+            }, completion: { _ in
+                self.loadAllPhotos()
+        })
+    }
+    
+    
+    // pobieramy zdjęcia wszystkich quizów
+    func loadAllPhotos() {
+        counter = imagesToLoad
+        for index in imagesToLoad..<(quizzes?.count)! {
+            
+            DispatchQueue.global(qos: .background).async { [unowned self] in
+                self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
+                self.counter += 1
+            }
+        }
+    }
  
 }
