@@ -202,12 +202,26 @@ class TaskVC: UIViewController {
             
             if index <= numberOfAnswers! {
                 button.alpha = 1.0
-                button.setTitle(quiz?.questions?[questionNumber].answers?[index - 1].text, for: .normal)
+                //button.setTitle(quiz?.questions?[questionNumber].answers?[index - 1].text, for: .normal)
+                
+                let text = quiz?.questions?[questionNumber].answers?[index - 1].text
+                
+                let style = NSMutableParagraphStyle()
+                style.alignment = .center
+                
+                let attributedString = NSAttributedString(
+                    string: text!,
+                    attributes: [
+                        NSFontAttributeName: UIFont.systemFont(ofSize: 15.0),
+                        NSForegroundColorAttributeName: #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 1),
+                        NSParagraphStyleAttributeName: style
+                    ])
+                button.setAttributedTitle(attributedString, for: .normal)
+                
             } else {
                 button.alpha = 0.0
             }
         }
-        // TODO: ustawić dla napisów przycisków setAttributtedTitle
     }
     
     
