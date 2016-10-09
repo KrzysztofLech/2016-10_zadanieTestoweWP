@@ -45,6 +45,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         counter = 1000      // przechodząc do innego widoku kończymy pobieranie zdjęć
     }
     

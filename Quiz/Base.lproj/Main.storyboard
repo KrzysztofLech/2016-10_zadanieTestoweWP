@@ -127,6 +127,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="czg-ff-vJH"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="background" destination="Xnx-kj-HjJ" id="H6f-Nc-xdy"/>
                         <outlet property="button1" destination="VkR-Uy-F1X" id="9ud-U7-Flg"/>
@@ -142,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gp6-fL-vsb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71.200000000000003" y="375.56221889055473"/>
+            <point key="canvasLocation" x="868" y="375.56221889055473"/>
         </scene>
         <!--BrowserVC-->
         <scene sceneID="E1n-yt-qjd">
@@ -181,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3k-Qn-KGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="840"/>
+            <point key="canvasLocation" x="1652" y="839.73013493253382"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="ayR-ZP-dSo">
@@ -189,7 +190,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="g4F-Eq-d2u" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wV7-1K-Bu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1367" y="840"/>
+            <point key="canvasLocation" x="2304.8000000000002" y="839.73013493253382"/>
         </scene>
         <!--Browser ContentVC-->
         <scene sceneID="8je-sc-eBG">
@@ -283,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKW-e4-ryp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="839.73013493253382"/>
+            <point key="canvasLocation" x="2967.1999999999998" y="839.73013493253382"/>
         </scene>
         <!--TaskVC-->
         <scene sceneID="eOH-vC-jzf">
@@ -443,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zou-4s-Aqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="116"/>
+            <point key="canvasLocation" x="2360.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--FinishVC-->
         <scene sceneID="Jy1-n5-i2B">
@@ -502,9 +503,7 @@
                                     <color key="titleColor" red="0.08235294118" green="0.0" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="allSelected:" destination="Fr0-LK-1kc" eventType="touchUpInside" id="xxU-LR-WH0"/>
-                                    <action selector="buttonSelected:" destination="GU9-Vb-VSy" eventType="touchUpInside" id="xhY-9v-S6Z"/>
-                                    <segue destination="NZk-tL-Sch" kind="presentation" modalTransitionStyle="crossDissolve" id="jWE-xL-x1b"/>
+                                    <segue destination="55r-Ru-3b5" kind="unwind" unwindAction="unwindToRootViewControllerWithSegue:" id="UJU-87-ujV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNM-fn-Inh" customClass="Button2" customModule="Quiz" customModuleProvider="target">
@@ -546,8 +545,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7G-nc-21M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="55r-Ru-3b5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2093.5999999999999" y="115.59220389805098"/>
+            <point key="canvasLocation" x="3032.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--TableVC-->
         <scene sceneID="P8U-Oy-exA">
@@ -562,7 +562,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nAo-2f-ZD3" id="jpF-05-dsM">
-                                    <frame key="frameInset" width="375" height="240"/>
+                                    <frame key="frameInset" width="375" height="239"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2H-4h-DyN">
@@ -610,7 +610,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MFg-7z-uVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="116"/>
+            <point key="canvasLocation" x="1652" y="115.59220389805098"/>
         </scene>
     </scenes>
     <resources>

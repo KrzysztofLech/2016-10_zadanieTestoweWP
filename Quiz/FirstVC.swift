@@ -48,21 +48,32 @@ class FirstVC: UIViewController {
         
         playerData = readPlayerData()
         //showDataFilePath()
+        readData()                              // odczyt danych JSON - 100 quizów
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        button1.alpha = 0.0
+        button2.alpha = 0.0
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        readData()                              // odczyt danych JSON - 100 quizów
         if isDataLoaded { start() }
     }
     
     
     func start() {
         loadFirstImages()     // pobieramy zdjęcia kilku początkowych quizów
-        animations1()         // jeśli dane zostały pobrane uruchamiamy animację
+        
+        if background.alpha == 0 {
+            animations1()         // jeśli dane zostały pobrane uruchamiamy animację 1
+        } else {
+            animations2()         // jeśli wróciliśmy z innego widoku to uruchamiamy animację 2
+        }
     }
     
     
@@ -145,7 +156,7 @@ class FirstVC: UIViewController {
         for index in 0...(imagesToLoad - 1) {
             // sprawdzamy, czy zdjęcie nie zostało już wcześniej pobrane
             if quizzes?.items?[index].mainPhoto?.smallImage == nil {
-                DispatchQueue.global(qos: .background).async { [unowned self] in
+                DispatchQueue.global(qos: .background).async {
                     self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
                     self.counterLoadedImages += 1
                     print("Pobrano zdjęcie \(index)")
@@ -172,7 +183,7 @@ class FirstVC: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if segue.identifier == "tableSegue" {
             let controler = segue.destination as! TableVC
             controler.quizzes = quizzes
@@ -207,5 +218,11 @@ class FirstVC: UIViewController {
             }
         }
     }
+    
+    // ustalamy miejsce powrotu
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+        //print("Unwind to Root View Controller")
+    }
+
  
 }
