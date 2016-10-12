@@ -37,15 +37,17 @@ class TableVC: UITableViewController {
         // odczytujemy dane gracza o wykonanych quizach
         playerData = readPlayerData()
         
+/*
         // uruchamiamy 4 wątki ładujące w tle zdjęcia quizów
         counter = 3     // zaczynamy od 3, gdyż tyle zdjęć wcześniej pobrano
         counter += 1
         counter += 1
         counter += 1
-        
+*/
         let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "TableViewCell")
-        tableView.rowHeight = 240                   // wysokość wiersza komórki
+        tableView.rowHeight = 240                                                               // wysokość wiersza komórki
+        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)            // pierwszy wiersz tabeli przesuwamy o 20 punktów w dół - poniżej status bara
     }
     
 
@@ -73,6 +75,7 @@ class TableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         let item = (quizzes?.items?[indexPath.row])!
         let resultText = checkPlayerData(quizID: (item.id)!)
+        
         cell.configure(for: item, index: indexPath.row, result: resultText)
         return cell
     }

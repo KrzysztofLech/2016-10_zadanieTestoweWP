@@ -15,7 +15,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    
+    var downloadTask: URLSessionDownloadTask?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,8 +33,17 @@ class TableViewCell: UITableViewCell {
     func configure(for item: Item, index: Int, result: String) {
         
         // ustawiamy zdjęcie
-        let image = item.mainPhoto?.smallImage
-        imageViewCell.image = image
+        if let image = item.mainPhoto?.smallImage {
+            imageViewCell.image = image                 // jeśli zdjęcie zostało wcześniej pobrane, to pokazujemy je
+        } else {
+            imageViewCell.image = nil
+            print("brak zdjęcia nr \(index)")
+            
+            if let urlString = item.mainPhoto?.url {
+                let url = URL(string: urlString)!
+                downloadTask = imageViewCell.loadImage(url: url)
+            }
+        }
         
         // wpisujemy tytuł quizu
         let labelText = String(index + 1) + ". " + (item.title)!
@@ -42,5 +51,13 @@ class TableViewCell: UITableViewCell {
         
         // podajemy wynik quizu
         resultLabel.text = result
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        downloadTask?.cancel()
+        downloadTask = nil
+        //print("PrepareForReuse")
     }
 }
