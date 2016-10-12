@@ -557,51 +557,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="240" id="nAo-2f-ZD3">
-                                <rect key="frame" x="0.0" y="28" width="375" height="240"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nAo-2f-ZD3" id="jpF-05-dsM">
-                                    <frame key="frameInset" width="375" height="240"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2H-4h-DyN">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="130" id="gya-qD-tx5"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLE-r6-B11">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="vVf-lR-xRr"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ostatni wynik: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rug-QU-CGl">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="250" id="hgO-B1-Ohn"/>
-                                                <constraint firstAttribute="height" constant="22" id="xGn-Ea-U6K"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="p2H-4h-DyN" secondAttribute="trailing" constant="5" id="8CC-qB-BAv"/>
-                                        <constraint firstAttribute="bottom" secondItem="YLE-r6-B11" secondAttribute="bottom" constant="5" id="Bkh-vk-rxn"/>
-                                        <constraint firstItem="Rug-QU-CGl" firstAttribute="centerX" secondItem="YLE-r6-B11" secondAttribute="centerX" id="Lii-9r-wSO"/>
-                                        <constraint firstItem="p2H-4h-DyN" firstAttribute="top" secondItem="jpF-05-dsM" secondAttribute="top" constant="5" id="VLQ-Ww-bb6"/>
-                                        <constraint firstItem="p2H-4h-DyN" firstAttribute="leading" secondItem="jpF-05-dsM" secondAttribute="leading" constant="5" id="cC1-gT-tRu"/>
-                                        <constraint firstItem="YLE-r6-B11" firstAttribute="leading" secondItem="jpF-05-dsM" secondAttribute="leading" constant="20" id="gFT-kq-d8Z"/>
-                                        <constraint firstAttribute="trailing" secondItem="YLE-r6-B11" secondAttribute="trailing" constant="20" id="lpt-NG-JhK"/>
-                                        <constraint firstItem="Rug-QU-CGl" firstAttribute="top" secondItem="p2H-4h-DyN" secondAttribute="bottom" constant="4" id="slk-eW-nny"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <gestureRecognizers/>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Nhd-oZ-VhO" id="2HM-JW-GLL"/>
                             <outlet property="delegate" destination="Nhd-oZ-VhO" id="ctK-eI-4Yg"/>

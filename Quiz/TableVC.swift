@@ -42,6 +42,10 @@ class TableVC: UITableViewController {
         counter += 1
         counter += 1
         counter += 1
+        
+        let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "TableViewCell")
+        tableView.rowHeight = 240                   // wysokość wiersza komórki
     }
     
 
@@ -63,28 +67,16 @@ class TableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return (quizzes?.count)! }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 240 }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 240 }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        // ustawiamy zdjęcie
-        let imageView = cell.viewWithTag(1000) as! UIImageView
-        let image = quizzes?.items?[indexPath.row].mainPhoto?.smallImage
-        imageView.image = image
-        
-        // wpisujemy tytuł quizu
-        let titleLabel = cell.viewWithTag(1001) as! UILabel
-        let labelText = String(indexPath.row + 1) + ". " + (quizzes?.items?[indexPath.row].title)!
-        titleLabel.text = labelText
-        
-        // podajemy wynik quizu
-        let resultLabel = cell.viewWithTag(1002) as! UILabel
-        let resultText = checkPlayerData(quizID: (quizzes?.items?[indexPath.row].id)!)
-        resultLabel.text = resultText
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        let item = (quizzes?.items?[indexPath.row])!
+        let resultText = checkPlayerData(quizID: (item.id)!)
+        cell.configure(for: item, index: indexPath.row, result: resultText)
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC

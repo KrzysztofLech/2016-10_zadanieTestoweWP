@@ -20,6 +20,8 @@
 		CF2A30FF1D951D1100480541 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A30FE1D951D1100480541 /* Extensions.swift */; };
 		CF2A31011D951D2800480541 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A31001D951D2800480541 /* Functions.swift */; };
 		CF6184B81D96A39800D4C77C /* PlayerQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6184B71D96A39800D4C77C /* PlayerQuiz.swift */; };
+		CF8553751DAE7F39003FEC22 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8553731DAE7F39003FEC22 /* TableViewCell.swift */; };
+		CF8553761DAE7F39003FEC22 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8553741DAE7F39003FEC22 /* TableViewCell.xib */; };
 		CFCFB57A1D92504F007E5515 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB5791D92504F007E5515 /* FirstVC.swift */; };
 		CFCFB57E1D925BDC007E5515 /* BrowserContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */; };
 		CFCFB5801D925CDB007E5515 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */; };
@@ -45,6 +47,8 @@
 		CF2A30FE1D951D1100480541 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CF2A31001D951D2800480541 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CF6184B71D96A39800D4C77C /* PlayerQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerQuiz.swift; sourceTree = "<group>"; };
+		CF8553731DAE7F39003FEC22 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CF8553741DAE7F39003FEC22 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		CFCFB5791D92504F007E5515 /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserContentVC.swift; sourceTree = "<group>"; };
 		CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			children = (
 				CFCFB5791D92504F007E5515 /* FirstVC.swift */,
 				CF11B55F1D9187D400BC817D /* TableVC.swift */,
+				CF8553731DAE7F39003FEC22 /* TableViewCell.swift */,
+				CF8553741DAE7F39003FEC22 /* TableViewCell.xib */,
 				CFCFB57F1D925CDB007E5515 /* BrowserVC.swift */,
 				CFCFB57D1D925BDC007E5515 /* BrowserContentVC.swift */,
 				CFCFB5811D92D582007E5515 /* TaskVC.swift */,
@@ -210,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF11B5531D917ECF00BC817D /* LaunchScreen.storyboard in Resources */,
+				CF8553761DAE7F39003FEC22 /* TableViewCell.xib in Resources */,
 				CF11B5501D917ECF00BC817D /* Assets.xcassets in Resources */,
 				CF11B54E1D917ECF00BC817D /* Main.storyboard in Resources */,
 			);
@@ -225,6 +232,7 @@
 				CF11B55C1D91845000BC817D /* SwiftyJSON.swift in Sources */,
 				CF11B5601D9187D400BC817D /* TableVC.swift in Sources */,
 				CF11B5621D918ACF00BC817D /* Quizzes.swift in Sources */,
+				CF8553751DAE7F39003FEC22 /* TableViewCell.swift in Sources */,
 				CF2A31011D951D2800480541 /* Functions.swift in Sources */,
 				CFCFB5821D92D582007E5515 /* TaskVC.swift in Sources */,
 				CF2816F41D953FB200FDDAF8 /* Button2.swift in Sources */,
