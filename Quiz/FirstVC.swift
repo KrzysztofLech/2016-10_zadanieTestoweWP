@@ -134,21 +134,29 @@ class FirstVC: UIViewController {
     
     // MARK: - Other Methods
     //----------------------------------------------------------------------------------------------------------------------
-    
+
     // odczyt danych JSON - paczki 100 quizów
     func readData() {
-        
-        let url = URL(string: "http://quiz.o2.pl/api/v1/quizzes/0/100")
-        if let jsonString = try? String(contentsOf: url!) {
-            let jsonData: Data = jsonString.data(using: String.Encoding.utf8)!
-            let json = JSON(data: jsonData)
-            quizzes = Quizzes(json: json)
-            isDataLoaded = true
-            //print("Załadowano dane")
-            return
-        }
-        showError()
+        let url = URL(string: "http://quiz.o2.pl/api/v1/quizzes/0/100")!
+        let sessionn = URLSession.shared
+        let dataTask = sessionn.dataTask(with: url, completionHandler: { data, response, error in
+            if error != nil {
+                self.showError()
+            } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                if let jsonData: Data = data {
+                    let json = JSON(data: jsonData)
+                    self.quizzes = Quizzes(json: json)
+                    self.isDataLoaded = true
+                    //print("Załadowano dane")
+                    DispatchQueue.main.async { self.start() }
+                }
+            } else {
+                print("Failure! \(response)")
+            }
+        })
+        dataTask.resume()
     }
+
     
     
     // pobieramy zdjęcia kilku początkowych quizów

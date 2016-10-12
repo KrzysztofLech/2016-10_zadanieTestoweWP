@@ -202,7 +202,6 @@ class TaskVC: UIViewController {
             
             if index <= numberOfAnswers! {
                 button.alpha = 1.0
-                //button.setTitle(quiz?.questions?[questionNumber].answers?[index - 1].text, for: .normal)
                 
                 let text = quiz?.questions?[questionNumber].answers?[index - 1].text
                 
