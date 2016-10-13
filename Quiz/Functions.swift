@@ -52,7 +52,7 @@ func showDataFilePath() {
 
 
 
-// funkcja odczytuje zapisuje dane o postępach gracza
+// funkcja odczytuje zapisane dane o postępach gracza
 func readPlayerData() -> [PlayerQuiz] {
     
     var playerData = [PlayerQuiz]()
@@ -65,7 +65,7 @@ func readPlayerData() -> [PlayerQuiz] {
             unarchiver.finishDecoding()
         }
     } else {
-        //print("Nie odnaleziono pliku z danymi!")
+        print("Nie odnaleziono pliku z danymi!")
     }
     return playerData
 }

@@ -31,7 +31,6 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     var currentPageIndex = 0
     var nextPageIndex = 1
     
-    var imageSize: CGSize!
     
     @IBOutlet weak var button: UIButton!
 
@@ -51,9 +50,6 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // określamy wielkość ładowanych zdjęć
-        imageSize = view.frame.size
         
         
         // uruchamiamy 4 wątki ładujące w tle zdjęcia quizów
@@ -110,7 +106,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         let image = quizzes?.items?[index].mainPhoto?.mediumImage
         // sprawdzenie czy zdjęcie jest już załadowane, jeśli nie, to ładujemy je
         if image == nil {
-            quizzes?.items?[index].loadImages(size: imageSize)
+            quizzes?.items?[index].loadImages()
         }
         quizImage = (quizzes?.items?[index].mainPhoto?.mediumImage)!
         
@@ -230,7 +226,7 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         if quizzes?.items?[index].mainPhoto?.mediumImage == nil {
             
             DispatchQueue.global(qos: .background).async { [unowned self] in
-                self.quizzes?.items?[index].loadImages(size: self.imageSize)
+                self.quizzes?.items?[index].loadImages()
                 print("pobrano zdjęcie quizu nr \(index)")
                 
                 self.counter += 1

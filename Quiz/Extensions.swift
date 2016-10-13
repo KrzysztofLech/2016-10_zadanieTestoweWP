@@ -30,9 +30,9 @@ extension UIImage {
 
 extension UIImageView {
     
-    // ładowanie ilustracji
+    // ładowanie ilustracji, skalowanie i zapis w tablicy
     
-    func loadImage(url: URL) -> URLSessionDownloadTask {
+    func loadImage(url: URL, item: Item) -> URLSessionDownloadTask {
         let session = URLSession.shared
         let downloadTask = session.downloadTask(with: url, completionHandler: {
             [weak self] url, response, error in
@@ -42,6 +42,14 @@ extension UIImageView {
                 DispatchQueue.main.async {
                     if let strongSelf = self {
                         strongSelf.image = image
+                        
+                        // pobrane zdjęcia skalujemy i zapamiętujemy
+                        let smallImage = image.resizedImageWithBounds(bounds: CGSize(width: 365, height: 130))
+                        let mediumImage = image.resizedImageWithBounds(bounds: CGSize(width: 375 * 2 , height: 230 * 2))
+                        //print("small: \(smallImage.size), medium: \(mediumImage.size)")
+                        
+                        item.mainPhoto?.smallImage = smallImage
+                        item.mainPhoto?.mediumImage = mediumImage
                     }
                 }}
             })

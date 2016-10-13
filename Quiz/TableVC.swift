@@ -16,16 +16,8 @@ class TableVC: UITableViewController {
     
     var quizzes: Quizzes?
     var playerData = [PlayerQuiz]()
-    
-    var amountAllQuizzes: Int?      // liczba wszystkich quizów
-    var counter = 0 {               // licznik pobranych zdjęć
-        didSet {
-            if counter < amountAllQuizzes! {
-                loadQuizImage(counter)
-            }
-        }
-    }
 
+    
     
     
     //MARK: - View methods
@@ -37,27 +29,14 @@ class TableVC: UITableViewController {
         // odczytujemy dane gracza o wykonanych quizach
         playerData = readPlayerData()
         
-/*
-        // uruchamiamy 4 wątki ładujące w tle zdjęcia quizów
-        counter = 3     // zaczynamy od 3, gdyż tyle zdjęć wcześniej pobrano
-        counter += 1
-        counter += 1
-        counter += 1
-*/
         let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "TableViewCell")
+        
         tableView.rowHeight = 240                                                               // wysokość wiersza komórki
         tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)            // pierwszy wiersz tabeli przesuwamy o 20 punktów w dół - poniżej status bara
     }
     
 
-
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        counter = 1000      // przechodząc do innego widoku kończymy pobieranie zdjęć
-    }
 
     
     
@@ -94,23 +73,6 @@ class TableVC: UITableViewController {
     
     // MARK: - Other methods
     //----------------------------------------------------------------------------------------------------------------------
-    
-    
-    // funkcja pobiera zdjęcia quizów
-    func loadQuizImage(_ index: Int) {
-        // sprawdzamy, czy zdjęcie nie zostało już wcześniej pobrane
-        if quizzes?.items?[index].mainPhoto?.smallImage == nil {
-            
-            DispatchQueue.global(qos: .background).async { [unowned self] in
-                let size = self.view.frame.size
-                self.quizzes?.items?[index].loadImages(size: size)
-                print("pobrano zdjęcie quizu nr \(index)")
-                
-                self.counter += 1
-            }
-        }
-    }
-
     
     func checkPlayerData(quizID: Int) -> String {
         // odczytujemy dane gracza i sprawdzamy, czy rozwiązywał dany quiz

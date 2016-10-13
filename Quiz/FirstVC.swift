@@ -165,7 +165,7 @@ class FirstVC: UIViewController {
             // sprawdzamy, czy zdjęcie nie zostało już wcześniej pobrane
             if quizzes?.items?[index].mainPhoto?.smallImage == nil {
                 DispatchQueue.global(qos: .background).async {
-                    self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
+                    self.quizzes?.items?[index].loadImages()
                     self.counterLoadedImages += 1
                     print("Pobrano zdjęcie \(index)")
                 }
@@ -195,7 +195,6 @@ class FirstVC: UIViewController {
         if segue.identifier == "tableSegue" {
             let controler = segue.destination as! TableVC
             controler.quizzes = quizzes
-            controler.amountAllQuizzes = quizzes?.count
         }
 
         else if segue.identifier == "browserSegue" {
@@ -221,7 +220,7 @@ class FirstVC: UIViewController {
         for index in imagesToLoad..<(quizzes?.count)! {
             
             DispatchQueue.global(qos: .background).async { [unowned self] in
-                self.quizzes?.items?[index].loadImages(size: self.view.frame.size)
+                self.quizzes?.items?[index].loadImages()
                 self.counter += 1
             }
         }

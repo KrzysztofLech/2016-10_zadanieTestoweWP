@@ -67,8 +67,9 @@ class Item {
         category = Category(json: json["category"])
         mainPhoto = MainPhoto(json: json["mainPhoto"])
     }
-    
-    func loadImages(size: CGSize) {
+
+
+    func loadImages() {
         //var error: Error?
         let quizImageURL = mainPhoto?.url
         let imageURL = URL(string: quizImageURL!)
@@ -79,10 +80,8 @@ class Item {
             
             //print("Pobrano zdjęcie: \(title!)")
             
-            let smallImage = image.resizedImageWithBounds(bounds: size)
-            let mediumImage = image.resizedImageWithBounds(bounds: CGSize(
-                width: size.width * 2,
-                height: size.height * 2))
+            let smallImage = image.resizedImageWithBounds(bounds: CGSize(width: 365, height: 130))
+            let mediumImage = image.resizedImageWithBounds(bounds: CGSize(width: 375 * 2 , height: 230 * 2))
             
             mainPhoto?.smallImage = smallImage
             mainPhoto?.mediumImage = mediumImage
@@ -93,7 +92,6 @@ class Item {
                 //print(error)
             }
     }
-        
 }
 
 
@@ -143,22 +141,8 @@ class MainPhoto {
         //title = json["title"].string
         //source = json["source"].string
         //author = json["author"].string
-/*
-        // pobieranie grafik i ich skalowanie w tle
-        let queue = DispatchQueue(label: "image", qos: .background, target: nil)
-        queue.async {
-            self.smallImage = self.getImage(width: 365, height: 130)
-        }
-*/
     }
-    
-    func getImage(imageSize: CGSize) -> UIImage {
-        let imageURL = URL(string: url!)
-        let data = try! Data(contentsOf: imageURL!)
-        let img = UIImage(data: data)!
-        let resizedImage = img.resizedImageWithBounds(bounds: CGSize(width: imageSize.width, height: imageSize.height))
-        return resizedImage
-    }
+
 }
 
 

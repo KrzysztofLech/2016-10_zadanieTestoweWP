@@ -17,16 +17,15 @@ class TableViewCell: UITableViewCell {
     
     var downloadTask: URLSessionDownloadTask?
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     
@@ -37,11 +36,11 @@ class TableViewCell: UITableViewCell {
             imageViewCell.image = image                 // jeśli zdjęcie zostało wcześniej pobrane, to pokazujemy je
         } else {
             imageViewCell.image = nil
-            print("brak zdjęcia nr \(index)")
+            //print("brak zdjęcia nr \(index)")
             
             if let urlString = item.mainPhoto?.url {
                 let url = URL(string: urlString)!
-                downloadTask = imageViewCell.loadImage(url: url)
+                downloadTask = imageViewCell.loadImage(url: url, item: item)
             }
         }
         
@@ -53,11 +52,13 @@ class TableViewCell: UITableViewCell {
         resultLabel.text = result
     }
     
+    
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        // wstrzymujemy pobieranie zdjęć do komórek nie wyświetlanych aktualnie
         downloadTask?.cancel()
         downloadTask = nil
-        //print("PrepareForReuse")
     }
 }
