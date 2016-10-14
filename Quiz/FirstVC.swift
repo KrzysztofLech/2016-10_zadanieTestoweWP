@@ -28,6 +28,7 @@ class FirstVC: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
 
+    
     var counter: Int = 0 {              // licznik pobieranych zdjęć
         didSet {
             let fractionalProgress: Float = Float(counter) / 100.0
