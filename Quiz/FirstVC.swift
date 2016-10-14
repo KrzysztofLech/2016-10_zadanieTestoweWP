@@ -44,7 +44,7 @@ class FirstVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        print("!!!!!!! Problem z pamięcią !!!!!!!!")
+        print("!!!!!!! Problem z pamięcią !!!!!!!")
     }
 
     
