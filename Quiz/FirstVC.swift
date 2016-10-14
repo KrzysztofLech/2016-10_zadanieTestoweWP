@@ -15,6 +15,7 @@ class FirstVC: UIViewController {
     let imagesToLoad = 3                // ilość zdjęć wstępnie ładowanych
     var counterLoadedImages = 0         // licznik załadowanych wstępnie zdjęć
     var isDataLoaded = false            // czy dane JSON zostały pobrane
+    
 
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var label1: UILabel!
@@ -31,12 +32,21 @@ class FirstVC: UIViewController {
         didSet {
             let fractionalProgress: Float = Float(counter) / 100.0
             
-            DispatchQueue.main.async { [unowned self] in
+            DispatchQueue.main.async { [unowned self] in                            // aktualizacja Progres View
                 self.progressView.setProgress(fractionalProgress, animated: true)
             }
             //print(fractionalProgress)
         }
     }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        print("!!!!!!! Problem z pamięcią !!!!!!!!")
+    }
+
+    
     
     
     // MARK: - View Methods
@@ -219,12 +229,54 @@ class FirstVC: UIViewController {
         counter = imagesToLoad
         for index in imagesToLoad..<(quizzes?.count)! {
             
+            let item = quizzes?.items?[index]
+            
+            if item?.mainPhoto?.smallImage == nil {
+                loadImage(forItem: item!)
+            }
+        }
+    }
+    
+    func loadImage(forItem item: Item) {
+        if let urlString = item.mainPhoto?.url {
+            let url = URL(string: urlString)!
+            
+            let session = URLSession.shared
+            let downloadTask = session.downloadTask(with: url, completionHandler: {
+                url, response, error in
+                if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    // pobrane zdjęcia skalujemy i zapamiętujemy
+                    let smallImage = image.resizedImageWithBounds(bounds: CGSize(width: 365, height: 130))
+                    let mediumImage = image.resizedImageWithBounds(bounds: CGSize(width: 375 * 2 , height: 230 * 2))
+                    
+                    //print("Pobrano - small: \(smallImage.size), medium: \(mediumImage.size)")
+                    
+                    item.mainPhoto?.smallImage = smallImage
+                    item.mainPhoto?.mediumImage = mediumImage
+                    
+                    // aktualizujemy Progress View
+                    self.counter += 1
+                }
+            })
+            downloadTask.resume()
+        }
+    }
+    
+    
+    
+/*
+    // pobieramy zdjęcia wszystkich quizów
+    func loadAllPhotos() {
+        counter = imagesToLoad
+        for index in imagesToLoad..<(quizzes?.count)! {
+            
             DispatchQueue.global(qos: .background).async { [unowned self] in
                 self.quizzes?.items?[index].loadImages()
                 self.counter += 1
             }
         }
     }
+*/
     
     // ustalamy miejsce powrotu
     @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {

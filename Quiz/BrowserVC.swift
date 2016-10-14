@@ -31,9 +31,24 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
     var currentPageIndex = 0
     var nextPageIndex = 1
     
+    var tasks = [Int: URLSessionDownloadTask]()
     
     @IBOutlet weak var button: UIButton!
 
+
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        print("!!!!!!! Problem z pamięcią !!!!!!!!")
+    }
+
+    
+    
+    
+    
     
     //MARK: - View methods
     //----------------------------------------------------------------------------------------------------------------------
@@ -234,16 +249,6 @@ class BrowserVC: UIViewController, UIPageViewControllerDataSource, UIPageViewCon
         }
     }
     
-    
-/*
-    func loadImage(index: Int) {
-        DispatchQueue.global(qos: .background).async { [unowned self] in
-            self.quizzes?.items?[index].loadImages(size: self.imageSize)
-            print("pobrano zdjęcie nr \(index)")
-        }
-    }
-
-*/
  
     @IBAction func buttonSelected(_ sender: UIButton) {
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC

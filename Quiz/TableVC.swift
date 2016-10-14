@@ -29,7 +29,7 @@ class TableVC: UITableViewController {
         // odczytujemy dane gracza o wykonanych quizach
         playerData = readPlayerData()
         
-        let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
+        let cellNib = UINib(nibName: "TableViewCell", bundle: nil)                                 // rejestrujemy Xiba z prototypem komórki tabeli
         tableView.register(cellNib, forCellReuseIdentifier: "TableViewCell")
         
         tableView.rowHeight = 240                                                               // wysokość wiersza komórki
@@ -48,13 +48,10 @@ class TableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return (quizzes?.count)! }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 240 }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         let item = (quizzes?.items?[indexPath.row])!
         let resultText = checkPlayerData(quizID: (item.id)!)
-        
         cell.configure(for: item, index: indexPath.row, result: resultText)
         return cell
     }
@@ -62,10 +59,8 @@ class TableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskVC = storyboard?.instantiateViewController(withIdentifier: "TaskVC") as! TaskVC
-        
         taskVC.quizID = quizzes?.items?[indexPath.row].id
         taskVC.quizImage = quizzes?.items?[indexPath.row].mainPhoto?.mediumImage
-        
         present(taskVC, animated: true, completion: nil)
     }
     

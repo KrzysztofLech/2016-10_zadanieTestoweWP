@@ -80,7 +80,6 @@ class TaskVC: UIViewController {
         super.viewWillAppear(animated)
         
         viewWidth = view.frame.width        // ustalamy szerokość ekranu
-        quizImageView.image = quizImage     // wyświetlamy zdjęcie przekazne z poprzedniego widoku
         
         // pokaż przyciski
         for index in 1...4 {
@@ -188,8 +187,11 @@ class TaskVC: UIViewController {
         // sprawdzamy, czy pytanie ma własne zdjęcie, jeśli tak to ładujemy je
         let questionImageURL = quiz?.questions?[questionNumber].image?.url
         if questionImageURL != nil && questionImageURL != ""  {
+            //print(questionImageURL)
             quizImageView.image = readImage(fromURL: questionImageURL!)
-            scaleImageAnimation()
+            scaleImageAnimation()               // restart animacji z nowym obrazkiem
+        } else {
+            quizImageView.image = quizImage     // wyświetlamy zdjęcie przekazne z poprzedniego widoku
         }
         
         quizQuestionNumber.text = String(format: "Pytanie %i", playerDoneQuestions + 1)
